@@ -1,6 +1,7 @@
 package maddenutils
 
 import (
+	"encoding/json"
 	"strconv"
 	"strings"
 	"time"
@@ -49,6 +50,37 @@ type MaddenStock struct {
 	EAN       string `json:"ean"`
 	BrandName string `json:"brandName"`
 	Quantity  int    `json:"quantity"`
+}
+
+// MaddenBearer holds the madden token reponse
+type MaddenBearer struct {
+	TokenType   string `json:"tokenType"`
+	AccessToken string `json:"accessToken"`
+}
+
+// APIKey holds the Madden apiKey
+type APIKey struct {
+	APIKey string `json:"apiKey"`
+}
+
+// GetAuth generates bearer token from Madden
+func GetAuth(baseURL string, accountID string, key string) string {
+	maddenKey := APIKey{
+		APIKey: key,
+	}
+
+	maddenKeyJSON, _ := json.Marshal(maddenKey)
+
+	// Get Madden Bearer Token
+	maddenAuthResponse := Post(
+		baseURL+"/accounts/"+accountID+"/auth",
+		"",
+		maddenKeyJSON,
+	)
+	var maddenAuth MaddenBearer
+	json.Unmarshal(maddenAuthResponse, &maddenAuth)
+
+	return maddenAuth.AccessToken
 }
 
 // BatchTransactions batches transaction struct into given size
