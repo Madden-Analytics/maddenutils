@@ -60,20 +60,22 @@ type MaddenBearer struct {
 
 // APIKey holds the Madden apiKey
 type APIKey struct {
-	APIKey string `json:"apiKey"`
+	AccountID string `json:"accountID"`
+	APIKey    string `json:"apiKey"`
 }
 
 // GetAuth generates bearer token from Madden
 func GetAuth(baseURL string, accountID string, key string) string {
 	maddenKey := APIKey{
-		APIKey: key,
+		AccountID: accountID,
+		APIKey:    key,
 	}
 
 	maddenKeyJSON, _ := json.Marshal(maddenKey)
 
 	// Get Madden Bearer Token
 	maddenAuthResponse := Post(
-		baseURL+"/accounts/"+accountID+"/auth",
+		baseURL+"/accounts/auth",
 		"",
 		maddenKeyJSON,
 	)
