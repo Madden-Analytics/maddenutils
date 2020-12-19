@@ -145,3 +145,48 @@ func Put(endpoint string, auth string, json []byte) (int, []byte) {
 	}
 	return resp.StatusCode, response
 }
+
+//Patch - Function to Patch data to Madden API
+func Patch(endpoint string, auth string, json []byte) []byte {
+
+	req, err := http.NewRequest("PATCH", endpoint, bytes.NewBuffer(json))
+	req.Header.Add("content-type", "application/json")
+	req.Header.Add("authorization", "Bearer "+auth)
+	resp, err := http.DefaultClient.Do(req)
+
+	log.WithFields(log.Fields{
+		"requesttype": "PATCH",
+		"endpoint":    endpoint,
+		"body":        string(json),
+	}).Debug("Request sent")
+
+	if err != nil {
+		log.WithFields(log.Fields{
+			"requesttype": "PATCH/Error",
+			"endpoint":    endpoint,
+			"body":        string(json),
+			"response":    err,
+		}).Error("ERROR")
+	}
+	defer resp.Body.Close()
+
+	response, _ := ioutil.ReadAll(resp.Body)
+	if resp.StatusCode != 201 {
+		log.WithFields(log.Fields{
+			"requesttype": "PATCH/Response",
+			"endpoint":    endpoint,
+			"statuscode":  resp.StatusCode,
+			"response":    string(response),
+		}).Error("ERROR")
+
+	} else {
+		log.WithFields(log.Fields{
+			"requesttype": "PATCH/Response",
+			"endpoint":    endpoint,
+			"statuscode":  resp.StatusCode,
+			"response":    string(response),
+		}).Debug("OK")
+		return response
+	}
+	return response
+}
