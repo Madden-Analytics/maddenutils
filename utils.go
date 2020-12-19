@@ -74,7 +74,7 @@ func GetAuth(baseURL string, accountID string, key string) string {
 	maddenKeyJSON, _ := json.Marshal(maddenKey)
 
 	// Get Madden Bearer Token
-	maddenAuthResponse := Post(
+	_, maddenAuthResponse := Post(
 		baseURL+"/auth",
 		"",
 		maddenKeyJSON,
