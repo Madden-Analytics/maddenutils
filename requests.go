@@ -11,7 +11,7 @@ import (
 )
 
 //Get ~ Function to GET data from Madden API
-func Get(endpoint string, auth string) []byte {
+func Get(endpoint string, auth string) (int, []byte) {
 
 	req, err := http.NewRequest("GET", endpoint, nil)
 	req.Header.Add("content-type", "application/json")
@@ -51,13 +51,13 @@ func Get(endpoint string, auth string) []byte {
 			"statuscode":  resp.StatusCode,
 			"response":    "",
 		}).Debug("OK")
-		return response
+		return resp.StatusCode, response
 	}
-	return response
+	return resp.StatusCode, response
 }
 
 //Post - Function to POST data to Madden API
-func Post(endpoint string, auth string, json []byte) []byte {
+func Post(endpoint string, auth string, json []byte) (int, []byte) {
 
 	req, err := http.NewRequest("POST", endpoint, bytes.NewBuffer(json))
 	req.Header.Add("content-type", "application/json")
@@ -96,13 +96,13 @@ func Post(endpoint string, auth string, json []byte) []byte {
 			"statuscode":  resp.StatusCode,
 			"response":    string(response),
 		}).Debug("OK")
-		return response
+		return resp.StatusCode, response
 	}
-	return response
+	return resp.StatusCode, response
 }
 
 //Put - Function to PUT data to Madden API
-func Put(endpoint string, auth string, json []byte) []byte {
+func Put(endpoint string, auth string, json []byte) (int, []byte) {
 
 	req, err := http.NewRequest("PUT", endpoint, bytes.NewBuffer(json))
 	req.Header.Add("content-type", "application/json")
@@ -141,7 +141,7 @@ func Put(endpoint string, auth string, json []byte) []byte {
 			"statuscode":  resp.StatusCode,
 			"response":    string(response),
 		}).Debug("OK")
-		return response
+		return resp.StatusCode, response
 	}
-	return response
+	return resp.StatusCode, response
 }
