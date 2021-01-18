@@ -52,6 +52,24 @@ type MaddenStock struct {
 	Quantity  int    `json:"quantity"`
 }
 
+// MaddenPIM holds product data
+type MaddenPIM struct {
+	ProductName string `json:"productName"`
+	VariantName string `json:"variantName"`
+	Sku         string `json:"sku"`
+	EAN         string `json:"ean"`
+	BrandName   string `json:"brandName"`
+	Category    string `json:"category"`
+	Collection  string `json:"collection"`
+	Season      string `json:"season"`
+	Year        string `json:"year"`
+	Size        string `json:"size"`
+	Color       string `json:"color"`
+	AgeGroup    string `json:"ageGroup"`
+	Gender      string `json:"gender"`
+	ModelNumber string `json:"ModelNumber"`
+}
+
 // MaddenBearer holds the madden token reponse
 type MaddenBearer struct {
 	TokenType   string `json:"tokenType"`
@@ -101,6 +119,18 @@ func BatchTransactions(batchSize int, batchSlice []MaddenTransaction) [][]Madden
 func BatchStocks(batchSize int, batchSlice []MaddenStock) [][]MaddenStock {
 
 	batches := make([][]MaddenStock, 0, (len(batchSlice)+batchSize-1)/batchSize)
+	for batchSize < len(batchSlice) {
+		batchSlice, batches = batchSlice[batchSize:], append(batches, batchSlice[0:batchSize:batchSize])
+	}
+	batches = append(batches, batchSlice)
+
+	return batches
+}
+
+// BatchPIM batches pim struct into given size
+func BatchPIM(batchSize int, batchSlice []MaddenPIM) [][]MaddenPIM {
+
+	batches := make([][]MaddenPIM, 0, (len(batchSlice)+batchSize-1)/batchSize)
 	for batchSize < len(batchSlice) {
 		batchSlice, batches = batchSlice[batchSize:], append(batches, batchSlice[0:batchSize:batchSize])
 	}
