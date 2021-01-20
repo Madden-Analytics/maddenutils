@@ -34,6 +34,8 @@ type MaddenTransactionItems struct {
 // MaddenTransaction holds transaction from Madden
 type MaddenTransaction struct {
 	TransactionDate         time.Time                `json:"transactionDate"`
+	CompletedAt             time.Time                `json:"completed_at"`
+	CancelledAt             time.Time                `json:"cancelled_at"`
 	ExternalStoreID         string                   `json:"externalStoreId"`
 	ExternalTransactionID   string                   `json:"externalTransactionId"`
 	MoneyFinalNet           float64                  `json:"moneyFinalNet"`
