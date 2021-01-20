@@ -5,6 +5,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"gopkg.in/guregu/null.v4"
 )
 
 // MaddenTransactionItems holds transcation items from Madden
@@ -34,8 +36,8 @@ type MaddenTransactionItems struct {
 // MaddenTransaction holds transaction from Madden
 type MaddenTransaction struct {
 	TransactionDate         time.Time                `json:"transactionDate"`
-	CompletedAt             time.Time                `json:"completed_at,omitempty"`
-	CancelledAt             time.Time                `json:"cancelled_at,omitempty"`
+	CompletedAt             null.Time                `json:"completed_at"`
+	CancelledAt             null.Time                `json:"cancelled_at"`
 	ExternalStoreID         string                   `json:"externalStoreId"`
 	ExternalTransactionID   string                   `json:"externalTransactionId"`
 	MoneyFinalNet           float64                  `json:"moneyFinalNet"`
