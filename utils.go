@@ -15,6 +15,7 @@ type MaddenTransactionItems struct {
 	Sku               string  `json:"sku"`
 	Ean               string  `json:"ean"`
 	BrandName         string  `json:"brandName"`
+	Supplier          string  `json:"supplier,omitempty"`
 	Category          string  `json:"category"`
 	Collection        string  `json:"collection"`
 	Season            string  `json:"season"`
