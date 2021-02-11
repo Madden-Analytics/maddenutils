@@ -46,6 +46,7 @@ type MaddenTransaction struct {
 	MoneyFinalVat           float64                  `json:"moneyFinalVat"`
 	MoneyTotalGrossRoundOff float64                  `json:"MoneyTotalGrossRoundOff"`
 	CurrencyCode            string                   `json:"currencyCode"`
+	Market                  string                   `json:"market"`
 	ExternalRowID           string                   `json:"externalRowId"`
 	Items                   []MaddenTransactionItems `json:"items"`
 }
