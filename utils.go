@@ -32,6 +32,7 @@ type MaddenTransactionItems struct {
 	CostPrice         float64 `json:"costPrice"`
 	CostPriceCurency  string  `json:"costPriceCurrency"`
 	MoneyDiscount     float64 `json:"moneyDiscount"`
+	ExternalID        string  `json:"externalID"`
 }
 
 // MaddenTransaction holds transaction from Madden
