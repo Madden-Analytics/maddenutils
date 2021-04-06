@@ -35,6 +35,15 @@ type MaddenTransactionItems struct {
 	ExternalID        string  `json:"externalID"`
 }
 
+type Seller struct {
+	Name string `json:"name"`
+}
+
+type Payments struct {
+	Name  string  `json:"name"`
+	Value float64 `json:"value"`
+}
+
 // MaddenTransaction holds transaction from Madden
 type MaddenTransaction struct {
 	TransactionDate         time.Time                `json:"transactionDate"`
@@ -49,6 +58,11 @@ type MaddenTransaction struct {
 	CurrencyCode            string                   `json:"currencyCode"`
 	Market                  string                   `json:"market"`
 	ExternalRowID           string                   `json:"externalRowId"`
+	CartDiscount            float64                  `json:"cartDiscount"`
+	ShippingName            null.String              `json:"shippingName"`
+	ShippingCost            null.Float               `json:"shippingCost"`
+	Seller                  Seller                   `json:"seller"`
+	Payments                []Payments               `json:"payments"`
 	Items                   []MaddenTransactionItems `json:"items"`
 }
 
