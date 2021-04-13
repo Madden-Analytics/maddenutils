@@ -5,7 +5,6 @@ import (
 	"bytes"
 	"io/ioutil"
 	"net/http"
-	"os"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -43,7 +42,6 @@ func Get(endpoint string, auth string) (int, []byte) {
 			"response":    string(response),
 		}).Error("ERROR")
 
-		os.Exit(1)
 	} else {
 		log.WithFields(log.Fields{
 			"requesttype": "GET/Response",
