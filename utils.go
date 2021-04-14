@@ -72,6 +72,7 @@ type MaddenStock struct {
 	EAN       string `json:"ean"`
 	BrandName string `json:"brandName"`
 	Quantity  int    `json:"quantity"`
+	Supplier  string `json:"supplier,omitempty"`
 }
 
 // MaddenPIM holds product data
