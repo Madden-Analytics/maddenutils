@@ -12,6 +12,7 @@ import (
 // MaddenTransactionItems holds transcation items from Madden
 type MaddenTransactionItems struct {
 	ProductName       string  `json:"productName"`
+	VariantName       string  `json:"variantName"`
 	Sku               string  `json:"sku"`
 	Ean               string  `json:"ean"`
 	BrandName         string  `json:"brandName"`
@@ -25,6 +26,7 @@ type MaddenTransactionItems struct {
 	AgeGroup          string  `json:"ageGroup"`
 	Gender            string  `json:"gender"`
 	ModelNumber       string  `json:"modelNumber"`
+	StyleNumber       string  `json:"styleNumber"`
 	Quantity          int     `json:"quantity"`
 	VatValue          int     `json:"vatValue"`
 	MoneyItemTotalNet float64 `json:"moneyItemTotalNet"`
