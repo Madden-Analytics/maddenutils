@@ -190,7 +190,7 @@ func Patch(endpoint string, auth string, json []byte) []byte {
 }
 
 //Request - Function to make general request to the Madden API
-func Request(requestType string, endpoint string, auth string, json []byte) []byte {
+func Request(requestType string, endpoint string, auth string, json []byte) (int, []byte) {
 
 	req, err := http.NewRequest(requestType, endpoint, bytes.NewBuffer(json))
 	req.Header.Add("content-type", "application/json")
@@ -229,7 +229,8 @@ func Request(requestType string, endpoint string, auth string, json []byte) []by
 			"statuscode":  resp.StatusCode,
 			"response":    string(response),
 		}).Debug("OK")
-		return response
+		return resp.StatusCode, response
+
 	}
-	return response
+	return resp.StatusCode, response
 }
