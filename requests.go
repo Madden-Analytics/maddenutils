@@ -188,3 +188,48 @@ func Patch(endpoint string, auth string, json []byte) []byte {
 	}
 	return response
 }
+
+//Request - Function to make general request to the Madden API
+func Request(requestType string, endpoint string, auth string, json []byte) []byte {
+
+	req, err := http.NewRequest(requestType, endpoint, bytes.NewBuffer(json))
+	req.Header.Add("content-type", "application/json")
+	req.Header.Add("authorization", "Bearer "+auth)
+	resp, err := http.DefaultClient.Do(req)
+
+	log.WithFields(log.Fields{
+		"requesttype": requestType,
+		"endpoint":    endpoint,
+		"body":        string(json),
+	}).Debug("Request sent")
+
+	if err != nil {
+		log.WithFields(log.Fields{
+			"requesttype": requestType,
+			"endpoint":    endpoint,
+			"body":        string(json),
+			"response":    err,
+		}).Error("ERROR")
+	}
+	defer resp.Body.Close()
+
+	response, _ := ioutil.ReadAll(resp.Body)
+	if resp.StatusCode >= 200 && resp.StatusCode <= 299 {
+		log.WithFields(log.Fields{
+			"requesttype": requestType,
+			"endpoint":    endpoint,
+			"statuscode":  resp.StatusCode,
+			"response":    string(response),
+		}).Error("ERROR")
+
+	} else {
+		log.WithFields(log.Fields{
+			"requesttype": requestType,
+			"endpoint":    endpoint,
+			"statuscode":  resp.StatusCode,
+			"response":    string(response),
+		}).Debug("OK")
+		return response
+	}
+	return response
+}
