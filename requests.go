@@ -215,21 +215,22 @@ func Request(requestType string, endpoint string, auth string, json []byte) (int
 
 	response, _ := ioutil.ReadAll(resp.Body)
 	if resp.StatusCode >= 200 && resp.StatusCode <= 299 {
-		log.WithFields(log.Fields{
-			"requesttype": requestType,
-			"endpoint":    endpoint,
-			"statuscode":  resp.StatusCode,
-			"response":    string(response),
-		}).Error("ERROR")
 
-	} else {
 		log.WithFields(log.Fields{
 			"requesttype": requestType,
 			"endpoint":    endpoint,
 			"statuscode":  resp.StatusCode,
 			"response":    string(response),
 		}).Debug("OK")
-		return resp.StatusCode, response
+
+	} else {
+
+		log.WithFields(log.Fields{
+			"requesttype": requestType,
+			"endpoint":    endpoint,
+			"statuscode":  resp.StatusCode,
+			"response":    string(response),
+		}).Error("ERROR")
 
 	}
 	return resp.StatusCode, response
