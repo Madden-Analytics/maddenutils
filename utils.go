@@ -93,6 +93,7 @@ type MaddenPIM struct {
 	AgeGroup    string `json:"ageGroup"`
 	Gender      string `json:"gender"`
 	ModelNumber string `json:"ModelNumber"`
+	StyleNumber string `json:"StyleNumber"`
 }
 
 // MaddenBearer holds the madden token reponse
