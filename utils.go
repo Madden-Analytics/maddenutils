@@ -1,6 +1,8 @@
 package maddenutils
 
 import (
+	"crypto/md5"
+	"encoding/hex"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -197,4 +199,18 @@ func StrToInt(str string) int {
 	nonFractionalPart := strings.Split(str, ".")
 	theInt, _ := strconv.Atoi(nonFractionalPart[0])
 	return theInt
+}
+
+// GetMD5Hash - Hashes 1/2 strings to md5
+func GetMD5Hash(string1 string, string2 string) string {
+	hasher := md5.New()
+	hash := ""
+	if len(string2) == 0 {
+		hasher.Write([]byte(string1))
+		hash = hex.EncodeToString(hasher.Sum(nil))
+	} else {
+		hasher.Write([]byte(string1 + "-" + string2))
+		hash = hex.EncodeToString(hasher.Sum(nil))
+	}
+	return hash
 }
