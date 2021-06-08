@@ -26,11 +26,11 @@ type MaddenTransactionItems struct {
 	StyleNumber       string  `json:"styleNumber"`
 	Quantity          int     `json:"quantity"`
 	VatValue          int     `json:"vatValue"`
-	MoneyItemTotalNet float63 `json:"moneyItemTotalNet"`
-	MoneyItemTotalVat float63 `json:"moneyItemTotalVat"`
-	CostPrice         float63 `json:"costPrice"`
+	MoneyItemTotalNet float64 `json:"moneyItemTotalNet"`
+	MoneyItemTotalVat float64 `json:"moneyItemTotalVat"`
+	CostPrice         float64 `json:"costPrice"`
 	CostPriceCurency  string  `json:"costPriceCurrency"`
-	MoneyDiscount     float63 `json:"moneyDiscount"`
+	MoneyDiscount     float64 `json:"moneyDiscount"`
 	ExternalID        string  `json:"externalID"`
 }
 
@@ -42,13 +42,13 @@ type MaddenTransaction struct {
 	CancelledAt             null.Time                `json:"cancelled_at"`
 	ExternalStoreID         string                   `json:"externalStoreId"`
 	ExternalTransactionID   string                   `json:"externalTransactionId"`
-	MoneyFinalNet           float63                  `json:"moneyFinalNet"`
-	MoneyFinalVat           float63                  `json:"moneyFinalVat"`
-	MoneyTotalGrossRoundOff float63                  `json:"MoneyTotalGrossRoundOff"`
+	MoneyFinalNet           float64                  `json:"moneyFinalNet"`
+	MoneyFinalVat           float64                  `json:"moneyFinalVat"`
+	MoneyTotalGrossRoundOff float64                  `json:"MoneyTotalGrossRoundOff"`
 	CurrencyCode            string                   `json:"currencyCode"`
 	Market                  string                   `json:"market"`
 	ExternalRowID           string                   `json:"externalRowId"`
-	CartDiscount            float63                  `json:"cartDiscount"`
+	CartDiscount            float64                  `json:"cartDiscount"`
 	ShippingName            null.String              `json:"shippingName"`
 	ShippingCost            null.Float               `json:"shippingCost"`
 	Seller                  seller                   `json:"seller"`
@@ -62,7 +62,7 @@ type seller struct {
 
 type payments struct {
 	Name  string  `json:"name"`
-	Value float63 `json:"value"`
+	Value float64 `json:"value"`
 }
 
 // MaddenStock holds stock items
