@@ -56,6 +56,38 @@ type MaddenTransaction struct {
 	Items                   []MaddenTransactionItems `json:"items"`
 }
 
+// DeliveryEvent holds each POI deliveries
+type DeliveryEvent struct {
+	Quantity int       `json:"quantity" gorm:"not null"`
+	Date     time.Time `json:"deliveryDate" gorm:"not null"`
+}
+
+// PurchaseOrderItem holds each purchase order row
+type PurchaseOrderItem struct {
+	ProductName        string          `json:"productName"`
+	Sku                string          `json:"sku"`
+	EAN                string          `json:"ean"`
+	BrandName          string          `json:"brandName"`
+	Quantity           int             `json:"quantity"`
+	TotalPriceNet      float64         `json:"totalPriceNet"`
+	TotalPriceVat      float64         `json:"totalPriceVat"`
+	TotalPriceCurrency string          `json:"totalPriceCurrency"`
+	Supplier           null.String     `json:"supplier"`
+	ExternalRowID      string          `json:"externalRowID"`
+	Deliveries         []DeliveryEvent `json:"deliveries"`
+}
+
+// PurchaseOrder main holder of purchase order items
+type PurchaseOrder struct {
+	OrderDate           time.Time           `json:"orderDate" gorm:"not null"`
+	DeliveryDate        time.Time           `json:"deliveryDate"`
+	DeliveryStatus      int                 `json:"deliveryStatus"` // 0 - Not Deliverd, 10 - Partially Delivered, 20 - Fully Delivered
+	WarehouseExternalID string              `json:"externalWarehouseId"`
+	ExternalPurchaseNo  string              `json:"externalPurchaseNo"`
+	ExternalComment     string              `json:"externalComment"`
+	Items               []PurchaseOrderItem `json:"items"`
+}
+
 type seller struct {
 	Name string `json:"name"`
 }
