@@ -80,6 +80,7 @@ type PurchaseOrderItem struct {
 
 // PurchaseOrder main holder of purchase order items
 type PurchaseOrder struct {
+	ID                  int                 `json:"id,omitempty"`
 	OrderDate           time.Time           `json:"orderDate" gorm:"not null"`
 	DeliveryDate        time.Time           `json:"deliveryDate"`
 	DeliveryStatus      int                 `json:"deliveryStatus"` // 0 - Not Deliverd, 10 - Partially Delivered, 20 - Fully Delivered
