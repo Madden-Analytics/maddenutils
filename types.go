@@ -58,8 +58,9 @@ type MaddenTransaction struct {
 
 // DeliveryEvent holds each POI deliveries
 type DeliveryEvent struct {
-	Quantity int       `json:"quantity" gorm:"not null"`
-	Date     time.Time `json:"deliveryDate" gorm:"not null"`
+	Quantity   int       `json:"quantity"`
+	Date       time.Time `json:"deliveryDate"`
+	DeliveryID int       `json:"deliveryID"`
 }
 
 // PurchaseOrderItem holds each purchase order row
