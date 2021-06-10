@@ -60,7 +60,7 @@ type MaddenTransaction struct {
 type DeliveryEvent struct {
 	Quantity   int       `json:"quantity"`
 	Date       time.Time `json:"deliveryDate"`
-	DeliveryID int       `json:"deliveryID"`
+	DeliveryID string    `json:"deliveryID"`
 }
 
 // PurchaseOrderItem holds each purchase order row
