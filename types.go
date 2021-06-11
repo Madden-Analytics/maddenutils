@@ -127,6 +127,43 @@ type MaddenPIM struct {
 	StyleNumber string `json:"styleNumber"`
 }
 
+// MaddenProduct holds main product
+type MaddenProduct struct {
+	ID          int    `json:"id"`
+	Name        string `json:"name"`
+	Modelnumber string `json:"modelNumber"`
+	Imageurl    string `json:"imageUrl"`
+	Brandid     int    `json:"brandID"`
+	Categoryid  int    `json:"categoryID"`
+	Activityid  int    `json:"activityID"`
+	Variants    []struct {
+		ID        int    `json:"id"`
+		Sku       string `json:"sku"`
+		Ean       string `json:"ean"`
+		Name      string `json:"name"`
+		Key       string `json:"key"`
+		Size      string `json:"size"`
+		Color     string `json:"color"`
+		Productid int    `json:"productID"`
+		Product   struct {
+			ID          int         `json:"id"`
+			Name        string      `json:"name"`
+			Modelnumber string      `json:"modelNumber"`
+			Imageurl    string      `json:"imageUrl"`
+			Brandid     int         `json:"brandID"`
+			Categoryid  int         `json:"categoryID"`
+			Activityid  interface{} `json:"activityID"`
+		} `json:"product"`
+		Collection  string `json:"collection"`
+		Season      string `json:"season"`
+		Year        string `json:"year"`
+		Agegroup    string `json:"ageGroup"`
+		Gender      string `json:"gender"`
+		Stylenumber string `json:"styleNumber"`
+		Active      bool   `json:"active"`
+	} `json:"variants"`
+}
+
 // MaddenVariant holds variant data
 type MaddenVariant struct {
 	ID        int    `json:"id"`
