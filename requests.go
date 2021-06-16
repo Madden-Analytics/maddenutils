@@ -213,25 +213,14 @@ func Request(requestType string, endpoint string, auth string, json []byte) (int
 	}
 	defer resp.Body.Close()
 
-	response, _ := ioutil.ReadAll(resp.Body)
-	if resp.StatusCode >= 200 && resp.StatusCode <= 299 {
-
+	response, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
 		log.WithFields(log.Fields{
-			"requesttype": requestType,
-			"endpoint":    endpoint,
-			"statuscode":  resp.StatusCode,
-			"response":    string(response),
-		}).Debug("OK")
-
-	} else {
-
-		log.WithFields(log.Fields{
-			"requesttype": requestType,
-			"endpoint":    endpoint,
-			"statuscode":  resp.StatusCode,
-			"response":    string(response),
-		}).Error("ERROR")
-
+			"requesttype":  requestType,
+			"endpoint":     endpoint,
+			"errorMessage": err,
+		}).Error("ERROR Reading Response")
 	}
+
 	return resp.StatusCode, response
 }
