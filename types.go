@@ -191,6 +191,23 @@ type MaddenVariant struct {
 	StyleNumber string `json:"styleNumber"`
 }
 
+// MaddenBrands hold brand data
+type MaddenBrands struct {
+	ID       int         `json:"id"`
+	Name     string      `json:"name"`
+	Logourl  string      `json:"logoUrl"`
+	Synonyms interface{} `json:"synonyms"`
+	File     string      `json:"file"`
+}
+
+// MaddenCategories holds category data
+type MaddenCategories struct {
+	ID       int         `json:"id"`
+	Name     string      `json:"name"`
+	Synonyms interface{} `json:"synonyms"`
+	ParentID interface{} `json:"parent_id"`
+}
+
 // MaddenBearer holds the madden token reponse
 type MaddenBearer struct {
 	TokenType   string `json:"tokenType"`
