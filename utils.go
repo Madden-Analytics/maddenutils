@@ -4,6 +4,7 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"encoding/json"
+	"fmt"
 	"strconv"
 	"strings"
 
@@ -111,4 +112,26 @@ func GetConfig(configName string, region string) []byte {
 
 	value := []byte(*param.Parameter.Value)
 	return value
+}
+
+// PutConfig - Updates config value (JSON) to AWS Parameter Store
+func PutConfig(configName string, region string, value string) {
+	sess, err := session.NewSessionWithOptions(session.Options{
+		Config:            aws.Config{Region: aws.String(region)},
+		SharedConfigState: session.SharedConfigEnable,
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	ssmsvc := ssm.New(sess, aws.NewConfig().WithRegion(region))
+	param, err := ssmsvc.PutParameter(&ssm.PutParameterInput{
+		Name:  aws.String(configName),
+		Value: aws.String(value),
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(param)
 }
