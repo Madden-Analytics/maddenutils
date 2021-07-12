@@ -126,8 +126,9 @@ func PutConfig(configName string, region string, value string) {
 
 	ssmsvc := ssm.New(sess, aws.NewConfig().WithRegion(region))
 	param, err := ssmsvc.PutParameter(&ssm.PutParameterInput{
-		Name:  aws.String(configName),
-		Value: aws.String(value),
+		Name:      aws.String(configName),
+		Value:     aws.String(value),
+		Overwrite: aws.Bool(true),
 	})
 	if err != nil {
 		panic(err)
