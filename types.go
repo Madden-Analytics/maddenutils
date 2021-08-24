@@ -126,6 +126,7 @@ type MaddenPIM struct {
 	ModelNumber       string `json:"modelNumber"`
 	StyleNumber       string `json:"styleNumber"`
 	VariantExternalID string `json:"variantExternalID"`
+	VariantKey        string `json:"variantKey"`
 }
 
 // MaddenProduct holds main product
