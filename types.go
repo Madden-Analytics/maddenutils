@@ -32,6 +32,7 @@ type MaddenTransactionItems struct {
 	CostPriceCurency  string  `json:"costPriceCurrency"`
 	MoneyDiscount     float64 `json:"moneyDiscount"`
 	ExternalID        string  `json:"externalID"`
+	ProductType       string  `json:"productType"`
 }
 
 // MaddenTransaction holds transaction from Madden
@@ -127,6 +128,7 @@ type MaddenPIM struct {
 	StyleNumber       string `json:"styleNumber"`
 	VariantExternalID string `json:"variantExternalID"`
 	VariantKey        string `json:"variantKey"`
+	ProductType       string `json:"productType"`
 }
 
 // MaddenProduct holds main product
