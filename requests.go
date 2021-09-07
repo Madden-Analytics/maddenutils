@@ -12,7 +12,7 @@ import (
 //Get ~ Function to GET data from Madden API
 func Get(endpoint string, auth string) (int, []byte) {
 
-	req, err := http.NewRequest("GET", endpoint, nil)
+	req, _ := http.NewRequest("GET", endpoint, nil)
 	req.Header.Add("content-type", "application/json")
 	req.Header.Add("authorization", "Bearer "+auth)
 	resp, err := http.DefaultClient.Do(req)
@@ -57,7 +57,7 @@ func Get(endpoint string, auth string) (int, []byte) {
 //Post - Function to POST data to Madden API
 func Post(endpoint string, auth string, json []byte) (int, []byte) {
 
-	req, err := http.NewRequest("POST", endpoint, bytes.NewBuffer(json))
+	req, _ := http.NewRequest("POST", endpoint, bytes.NewBuffer(json))
 	req.Header.Add("content-type", "application/json")
 	req.Header.Add("authorization", "Bearer "+auth)
 	resp, err := http.DefaultClient.Do(req)
@@ -102,7 +102,7 @@ func Post(endpoint string, auth string, json []byte) (int, []byte) {
 //Put - Function to PUT data to Madden API
 func Put(endpoint string, auth string, json []byte) (int, []byte) {
 
-	req, err := http.NewRequest("PUT", endpoint, bytes.NewBuffer(json))
+	req, _ := http.NewRequest("PUT", endpoint, bytes.NewBuffer(json))
 	req.Header.Add("content-type", "application/json")
 	req.Header.Add("authorization", "Bearer "+auth)
 	resp, err := http.DefaultClient.Do(req)
@@ -147,7 +147,7 @@ func Put(endpoint string, auth string, json []byte) (int, []byte) {
 //Patch - Function to Patch data to Madden API
 func Patch(endpoint string, auth string, json []byte) []byte {
 
-	req, err := http.NewRequest("PATCH", endpoint, bytes.NewBuffer(json))
+	req, _ := http.NewRequest("PATCH", endpoint, bytes.NewBuffer(json))
 	req.Header.Add("content-type", "application/json")
 	req.Header.Add("authorization", "Bearer "+auth)
 	resp, err := http.DefaultClient.Do(req)
@@ -192,7 +192,7 @@ func Patch(endpoint string, auth string, json []byte) []byte {
 //Request - Function to make general request to the Madden API
 func Request(requestType string, endpoint string, auth string, json []byte) (int, []byte) {
 
-	req, err := http.NewRequest(requestType, endpoint, bytes.NewBuffer(json))
+	req, _ := http.NewRequest(requestType, endpoint, bytes.NewBuffer(json))
 	req.Header.Add("content-type", "application/json")
 	req.Header.Add("authorization", "Bearer "+auth)
 	resp, err := http.DefaultClient.Do(req)
