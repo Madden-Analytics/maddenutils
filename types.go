@@ -174,7 +174,7 @@ type MaddenProduct struct {
 type MaddenVariant struct {
 	ID        int    `json:"id"`
 	Sku       string `json:"sku"`
-	VendorSku string `json:"vendorSKU"`
+	VendorSKU string `json:"vendorSKU"`
 	Ean       string `json:"ean"`
 	Name      string `json:"name"`
 	Key       string `json:"key"`
