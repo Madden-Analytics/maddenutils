@@ -112,6 +112,8 @@ type MaddenStock struct {
 
 // MaddenPIM holds product data
 type MaddenPIM struct {
+	ProductID         int    `json:"productID,omitempty"`
+	VariantID         int    `json:"variantID,omitempty"`
 	ProductName       string `json:"productName"`
 	VariantName       string `json:"variantName"`
 	Sku               string `json:"sku"`
