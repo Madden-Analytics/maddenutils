@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"gopkg.in/guregu/null.v4"
+	"gorm.io/datatypes"
 )
 
 // MaddenTransactionItems holds transcation items from Madden
@@ -112,39 +113,41 @@ type MaddenStock struct {
 
 // MaddenPIM holds product data
 type MaddenPIM struct {
-	ProductID         int    `json:"productID,omitempty"`
-	VariantID         int    `json:"variantID,omitempty"`
-	ProductName       string `json:"productName"`
-	VariantName       string `json:"variantName"`
-	Sku               string `json:"sku"`
-	EAN               string `json:"ean"`
-	BrandName         string `json:"brandName"`
-	Category          string `json:"category"`
-	Collection        string `json:"collection"`
-	Season            string `json:"season"`
-	Year              string `json:"year"`
-	Size              string `json:"size"`
-	Color             string `json:"color"`
-	AgeGroup          string `json:"ageGroup"`
-	Gender            string `json:"gender"`
-	ModelNumber       string `json:"modelNumber"`
-	StyleNumber       string `json:"styleNumber"`
-	VariantExternalID string `json:"variantExternalID"`
-	VariantKey        string `json:"variantKey"`
-	ProductType       int    `json:"productType"`
-	VendorSKU         string `json:"vendorSKU"`
+	ProductID         int            `json:"productID,omitempty"`
+	VariantID         int            `json:"variantID,omitempty"`
+	ProductName       string         `json:"productName"`
+	VariantName       string         `json:"variantName"`
+	Sku               string         `json:"sku"`
+	EAN               string         `json:"ean"`
+	BrandName         string         `json:"brandName"`
+	Category          string         `json:"category"`
+	Collection        string         `json:"collection"`
+	Season            string         `json:"season"`
+	Year              string         `json:"year"`
+	Size              string         `json:"size"`
+	Color             string         `json:"color"`
+	AgeGroup          string         `json:"ageGroup"`
+	Gender            string         `json:"gender"`
+	ModelNumber       string         `json:"modelNumber"`
+	StyleNumber       string         `json:"styleNumber"`
+	VariantExternalID string         `json:"variantExternalID"`
+	VariantKey        string         `json:"variantKey"`
+	ProductType       int            `json:"productType"`
+	ProductInfo       datatypes.JSON `json:"info"`
+	VendorSKU         string         `json:"vendorSKU"`
 }
 
 // MaddenProduct holds main product
 type MaddenProduct struct {
-	ID          int    `json:"id"`
-	Name        string `json:"name"`
-	Modelnumber string `json:"modelNumber"`
-	Imageurl    string `json:"imageUrl"`
-	Brandid     int    `json:"brandID"`
-	Categoryid  int    `json:"categoryID"`
-	Activityid  int    `json:"activityID"`
-	ProductType int    `json:"productType"`
+	ID          int            `json:"id"`
+	Name        string         `json:"name"`
+	Modelnumber string         `json:"modelNumber"`
+	Imageurl    string         `json:"imageUrl"`
+	Brandid     int            `json:"brandID"`
+	Categoryid  int            `json:"categoryID"`
+	Activityid  int            `json:"activityID"`
+	ProductType int            `json:"productType"`
+	ProductInfo datatypes.JSON `json:"info"`
 	Variants    []struct {
 		ID        int    `json:"id"`
 		Sku       string `json:"sku"`
