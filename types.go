@@ -209,8 +209,9 @@ type MaddenVariant struct {
 			Synonyms []string `json:"synonyms"`
 			ParentID int      `json:"parent_id"`
 		} `json:"category"`
-		ActivityID  int `json:"activityID"`
-		ProductType int `json:"productType"`
+		ActivityID  int            `json:"activityID"`
+		ProductType int            `json:"productType"`
+		ProductInfo datatypes.JSON `json:"info"`
 	} `json:"product"`
 	Collection   string `json:"collection"`
 	Season       string `json:"season"`
