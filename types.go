@@ -34,7 +34,7 @@ type MaddenTransactionItems struct {
 	CostPriceCurency  string  `json:"costPriceCurrency"`
 	MoneyDiscount     float64 `json:"moneyDiscount"`
 	ExternalID        string  `json:"externalID"`
-	ProductType       int     `json:"productType"`
+	ProductType       int     `json:"productType,omitempty"`
 }
 
 // MaddenTransaction holds transaction from Madden
@@ -223,6 +223,27 @@ type MaddenVariant struct {
 	ProjectionID string `json:"projectionID"`
 	ExternalID   string `json:"externalID"`
 	Source       int    `json:"source"`
+}
+
+type MaddenStores struct {
+	Name            string            `json:"name"`
+	ExternalStoreID string            `json:"externalStoreId"`
+	ChannelType     int               `json:"channelType"` //enum
+	Adress          string            `json:"adress"`
+	Adress2         string            `json:"adress2"`
+	Zip             string            `json:"zip"`
+	City            string            `json:"city"`
+	State           string            `json:"state"`
+	CountryCode     string            `json:"countryCode"`
+	CurrencyCode    string            `json:"currencyCode"`
+	Warehouses      []MaddenWarehouse `json:"warehouses"`
+}
+
+// Warehouse serves WarehouseItems too some Stores
+type MaddenWarehouse struct {
+	Name                string         `json:"name"`
+	Stores              []MaddenStores `json:"stores"`
+	WarehouseExternalID string         `json:"externalId"`
 }
 
 // MaddenBrands hold brand data
