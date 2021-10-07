@@ -129,7 +129,7 @@ func PutConfig(configName string, region string, value string) {
 		Name:      aws.String(configName),
 		Value:     aws.String(value),
 		Overwrite: aws.Bool(true),
-		Type:      aws.String("Śtring"),
+		Type:      aws.String("String"),
 	})
 	if err != nil {
 		panic(err)
