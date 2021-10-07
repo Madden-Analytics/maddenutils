@@ -4,7 +4,6 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"encoding/json"
-	"fmt"
 	"strconv"
 	"strings"
 
@@ -125,7 +124,7 @@ func PutConfig(configName string, region string, value string) {
 	}
 
 	ssmsvc := ssm.New(sess, aws.NewConfig().WithRegion(region))
-	param, err := ssmsvc.PutParameter(&ssm.PutParameterInput{
+	_, err = ssmsvc.PutParameter(&ssm.PutParameterInput{
 		Name:      aws.String(configName),
 		Value:     aws.String(value),
 		Overwrite: aws.Bool(true),
@@ -134,6 +133,4 @@ func PutConfig(configName string, region string, value string) {
 	if err != nil {
 		panic(err)
 	}
-
-	fmt.Println(param)
 }
