@@ -241,9 +241,8 @@ type MaddenStores struct {
 
 // Warehouse serves WarehouseItems too some Stores
 type MaddenWarehouse struct {
-	Name                string         `json:"name"`
-	Stores              []MaddenStores `json:"stores"`
-	WarehouseExternalID string         `json:"externalId"`
+	Name                string `json:"name"`
+	WarehouseExternalID string `json:"externalId"`
 }
 
 // MaddenBrands hold brand data
