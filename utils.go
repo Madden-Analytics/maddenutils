@@ -120,7 +120,7 @@ func PutConfig(configName string, region string, value string) error {
 		SharedConfigState: session.SharedConfigEnable,
 	})
 	if err != nil {
-		return err
+		panic(err)
 	}
 
 	ssmsvc := ssm.New(sess, aws.NewConfig().WithRegion(region))
@@ -130,9 +130,6 @@ func PutConfig(configName string, region string, value string) error {
 		Overwrite: aws.Bool(true),
 		Type:      aws.String("String"),
 	})
-	if err != nil {
-		return err
-	}
 
 	return err
 }
