@@ -114,13 +114,13 @@ func GetConfig(configName string, region string) []byte {
 }
 
 // PutConfig - Updates config value (JSON) to AWS Parameter Store
-func PutConfig(configName string, region string, value string) {
+func PutConfig(configName string, region string, value string) error {
 	sess, err := session.NewSessionWithOptions(session.Options{
 		Config:            aws.Config{Region: aws.String(region)},
 		SharedConfigState: session.SharedConfigEnable,
 	})
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	ssmsvc := ssm.New(sess, aws.NewConfig().WithRegion(region))
@@ -131,6 +131,8 @@ func PutConfig(configName string, region string, value string) {
 		Type:      aws.String("String"),
 	})
 	if err != nil {
-		panic(err)
+		return err
 	}
+
+	return err
 }
