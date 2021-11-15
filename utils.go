@@ -4,6 +4,8 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"encoding/json"
+	"log"
+	"net/http"
 	"strconv"
 	"strings"
 
@@ -22,13 +24,17 @@ func GetAuth(baseURL string, accountID string, key string) string {
 	maddenKeyJSON, _ := json.Marshal(maddenKey)
 
 	// Get Madden Bearer Token
-	_, maddenAuthResponse := Post(
+	statusCode, maddenAuthResponse := Post(
 		baseURL+"/auth",
 		"",
 		maddenKeyJSON,
 	)
 	var maddenAuth MaddenBearer
-	json.Unmarshal(maddenAuthResponse, &maddenAuth)
+	if statusCode != http.StatusOK {
+		json.Unmarshal(maddenAuthResponse, &maddenAuth)
+	} else {
+		log.Panic("Error getting auth")
+	}
 
 	return maddenAuth.AccessToken
 }
