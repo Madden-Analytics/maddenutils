@@ -4,8 +4,6 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"encoding/json"
-	"log"
-	"net/http"
 	"strconv"
 	"strings"
 
@@ -15,28 +13,24 @@ import (
 )
 
 // GetAuth generates bearer token from Madden
-func GetAuth(baseURL string, accountID string, key string) string {
+func GetAuth(baseURL string, accountID string, key string) (int, string) {
 	maddenKey := APIKey{
 		AccountID: accountID,
 		APIKey:    key,
 	}
 
+	// Marshal + Create Madden Bearer Token
 	maddenKeyJSON, _ := json.Marshal(maddenKey)
-
-	// Get Madden Bearer Token
 	statusCode, maddenAuthResponse := Post(
 		baseURL+"/auth",
 		"",
 		maddenKeyJSON,
 	)
-	var maddenAuth MaddenBearer
-	if statusCode != http.StatusOK {
-		json.Unmarshal(maddenAuthResponse, &maddenAuth)
-	} else {
-		log.Panic("Error getting auth")
-	}
 
-	return maddenAuth.AccessToken
+	var maddenAuth MaddenBearer
+	json.Unmarshal(maddenAuthResponse, &maddenAuth)
+
+	return statusCode, maddenAuth.AccessToken
 }
 
 // BatchTransactions batches transaction struct into given size
