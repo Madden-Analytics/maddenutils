@@ -273,3 +273,65 @@ type APIKey struct {
 	AccountID string `json:"accountID"`
 	APIKey    string `json:"apiKey"`
 }
+
+// Transaction main holder of transaction items
+type WholesaleTransaction struct {
+	TransactionID           int                        `json:"transactionID"`
+	TransactionDate         time.Time                  `json:"transactionDate"`
+	CompletedAt             null.Time                  `json:"completed_at"`
+	CancelledAt             null.Time                  `json:"cancelled_at"`
+	AskedDeliveryDate       null.Time                  `json:"askedDeliveryDate"`
+	CustomerName            string                     `json:"customerName"`
+	CustomerExternalID      string                     `json:"customerExternalID"`
+	ExternalStoreID         string                     `json:"externalStoreId"`
+	ExternalTransactionID   string                     `json:"externalTransactionId"`
+	MoneyFinalNet           float64                    `json:"moneyFinalNet"`
+	MoneyFinalVat           float64                    `json:"moneyFinalVat"`
+	MoneyTotalGrossRoundOff float64                    `json:"MoneyTotalGrossRoundOff"`
+	CurrencyCode            string                     `json:"currencyCode"`
+	ExternalRowID           string                     `json:"externalRowId"`
+	Items                   []WholesaleTransactionItem `json:"items"`
+	Market                  string                     `json:"market"`
+	CartDiscount            float64                    `json:"cartDiscount"`
+	ShippingName            null.String                `json:"shippingName"`
+	ShippingCost            null.Float                 `json:"shippingCost"`
+}
+
+// TransactionItem or event log
+type WholesaleTransactionItem struct {
+	ProductName       string                   `json:"productName"`
+	SKU               string                   `json:"sku"`
+	VendorSKU         string                   `json:"vendorSKU"`
+	EAN               string                   `json:"ean"`
+	BrandName         string                   `json:"brandName"`
+	Category          string                   `json:"category"`
+	Collection        string                   `json:"collection"`
+	Season            string                   `json:"season"`
+	Year              string                   `json:"year"`
+	Size              string                   `json:"size"`
+	Color             string                   `json:"color"`
+	AgeGroup          string                   `json:"ageGroup"`
+	Gender            string                   `json:"gender"`
+	ModelNumber       string                   `json:"ModelNumber"`
+	Quantity          int                      `json:"quantity"`
+	VatValue          int                      `json:"vatValue"`
+	MoneyItemTotalNet float64                  `json:"moneyItemTotalNet"`
+	MoneyItemTotalVat float64                  `json:"moneyItemTotalVat"`
+	CostPrice         float64                  `json:"costPrice"`
+	CostPriceCurrency string                   `json:"costPriceCurrency"`
+	MoneyDiscount     float64                  `json:"moneyDiscount"`
+	Supplier          string                   `json:"supplier"`
+	ExternalID        string                   `json:"externalID"`
+	StyleNumber       string                   `json:"styleNumber"`
+	VariantName       string                   `json:"variantName"`
+	ProductType       int                      `json:"productType"`
+	ShipmentEvent     []WholesaleShipmentEvent `json:"shipments"`
+}
+
+// ShippingEvent holds each TIW shipment
+type WholesaleShipmentEvent struct {
+	Quantity            int       `json:"quantity"`
+	Date                time.Time `json:"shipmentDate"`
+	ShipmentID          string    `json:"shipmentID"`
+	ExternalWarehouseID string    `json:"externalWarehouseID"`
+}
