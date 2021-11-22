@@ -282,7 +282,7 @@ type WholesaleTransaction struct {
 	CancelledAt             null.Time                  `json:"cancelled_at"`
 	AskedDeliveryDate       null.Time                  `json:"askedDeliveryDate"`
 	CustomerName            string                     `json:"customerName"`
-	CustomerExternalID      string                     `json:"customerExternalID"`
+	CustomerExternalID      string                     `json:"externalCustomerID"`
 	ExternalStoreID         string                     `json:"externalStoreId"`
 	ExternalTransactionID   string                     `json:"externalTransactionId"`
 	MoneyFinalNet           float64                    `json:"moneyFinalNet"`
