@@ -276,7 +276,7 @@ type APIKey struct {
 
 // Transaction main holder of transaction items
 type WholesaleTransaction struct {
-	TransactionID           int                        `json:"transactionID"`
+	TransactionID           int                        `json:"id,omitempty"`
 	TransactionDate         time.Time                  `json:"transactionDate"`
 	CompletedAt             null.Time                  `json:"completed_at"`
 	CancelledAt             null.Time                  `json:"cancelled_at"`
