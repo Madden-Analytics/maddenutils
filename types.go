@@ -148,6 +148,7 @@ type MaddenProduct struct {
 	Activityid  int              `json:"activityID"`
 	ProductType int              `json:"productType"`
 	ProductInfo datatypes.JSON   `json:"info"`
+	Brand       *MaddenBrands    `json:"brand,omitempty"`
 	Variants    []*MaddenVariant `json:"variants,omitempty"`
 }
 
