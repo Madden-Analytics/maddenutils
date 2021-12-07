@@ -139,90 +139,40 @@ type MaddenPIM struct {
 
 // MaddenProduct holds main product
 type MaddenProduct struct {
-	ID          int            `json:"id"`
-	Name        string         `json:"name"`
-	Modelnumber string         `json:"modelNumber"`
-	Imageurl    string         `json:"imageUrl"`
-	Brandid     int            `json:"brandID"`
-	Categoryid  int            `json:"categoryID"`
-	Activityid  int            `json:"activityID"`
-	ProductType int            `json:"productType"`
-	ProductInfo datatypes.JSON `json:"info"`
-	Variants    []struct {
-		ID        int    `json:"id"`
-		Sku       string `json:"sku"`
-		Ean       string `json:"ean"`
-		Name      string `json:"name"`
-		Key       string `json:"key"`
-		Size      string `json:"size"`
-		Color     string `json:"color"`
-		Productid int    `json:"productID"`
-		Product   struct {
-			ID          int         `json:"id"`
-			Name        string      `json:"name"`
-			Modelnumber string      `json:"modelNumber"`
-			Imageurl    string      `json:"imageUrl"`
-			Brandid     int         `json:"brandID"`
-			Categoryid  int         `json:"categoryID"`
-			Activityid  interface{} `json:"activityID"`
-			ProductType int         `json:"productType"`
-		} `json:"product,omitempty"`
-		Collection  string `json:"collection"`
-		Season      string `json:"season"`
-		Year        string `json:"year"`
-		Agegroup    string `json:"ageGroup"`
-		Gender      string `json:"gender"`
-		Stylenumber string `json:"styleNumber"`
-		Active      bool   `json:"active"`
-	} `json:"variants"`
+	ID          int              `json:"id"`
+	Name        string           `json:"name"`
+	Modelnumber string           `json:"modelNumber"`
+	Imageurl    string           `json:"imageUrl"`
+	Brandid     int              `json:"brandID"`
+	Categoryid  int              `json:"categoryID"`
+	Activityid  int              `json:"activityID"`
+	ProductType int              `json:"productType"`
+	ProductInfo datatypes.JSON   `json:"info"`
+	Variants    []*MaddenVariant `json:"variants,omitempty"`
 }
 
 // MaddenVariant holds variant data
 type MaddenVariant struct {
-	ID        int    `json:"id"`
-	Sku       string `json:"sku"`
-	VendorSKU string `json:"vendorSKU"`
-	Ean       string `json:"ean"`
-	Name      string `json:"name"`
-	Key       string `json:"key"`
-	Size      string `json:"size"`
-	Color     string `json:"color"`
-	ProductID int    `json:"productID"`
-	Product   struct {
-		ID          int    `json:"id"`
-		Name        string `json:"name"`
-		ModelNumber string `json:"modelNumber"`
-		ImageURL    string `json:"imageUrl"`
-		BrandID     int    `json:"brandID"`
-		Brand       struct {
-			ID        int      `json:"id"`
-			Name      string   `json:"name"`
-			LogoURL   string   `json:"logoUrl"`
-			Synonyms  []string `json:"synonyms"`
-			File      string   `json:"file"`
-			AccountID string   `json:"accountID"`
-		} `json:"brand,omitempty"`
-		CategoryID int `json:"categoryID"`
-		Category   struct {
-			ID       int      `json:"id"`
-			Name     string   `json:"name"`
-			Synonyms []string `json:"synonyms"`
-			ParentID int      `json:"parent_id"`
-		} `json:"category,omitempty"`
-		ActivityID  int            `json:"activityID"`
-		ProductType int            `json:"productType"`
-		ProductInfo datatypes.JSON `json:"info"`
-	} `json:"product,omitempty"`
-	Collection   string `json:"collection"`
-	Season       string `json:"season"`
-	Year         string `json:"year"`
-	AgeGroup     string `json:"ageGroup"`
-	Gender       string `json:"gender"`
-	StyleNumber  string `json:"styleNumber"`
-	Active       bool   `json:"active"`
-	ProjectionID string `json:"projectionID"`
-	ExternalID   string `json:"externalID"`
-	Source       int    `json:"source"`
+	ID           int            `json:"id"`
+	Sku          string         `json:"sku"`
+	VendorSKU    string         `json:"vendorSKU"`
+	Ean          string         `json:"ean"`
+	Name         string         `json:"name"`
+	Key          string         `json:"key"`
+	Size         string         `json:"size"`
+	Color        string         `json:"color"`
+	ProductID    int            `json:"productID"`
+	Product      *MaddenProduct `json:"product,omitempty"`
+	Collection   string         `json:"collection"`
+	Season       string         `json:"season"`
+	Year         string         `json:"year"`
+	AgeGroup     string         `json:"ageGroup"`
+	Gender       string         `json:"gender"`
+	StyleNumber  string         `json:"styleNumber"`
+	Active       bool           `json:"active"`
+	ProjectionID string         `json:"projectionID"`
+	ExternalID   string         `json:"externalID"`
+	Source       int            `json:"source"`
 }
 
 type MaddenStores struct {
