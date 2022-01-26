@@ -139,17 +139,18 @@ type MaddenPIM struct {
 
 // MaddenProduct holds main product
 type MaddenProduct struct {
-	ID          int              `json:"id"`
-	Name        string           `json:"name"`
-	Modelnumber string           `json:"modelNumber"`
-	Imageurl    string           `json:"imageUrl"`
-	Brandid     int              `json:"brandID"`
-	Categoryid  int              `json:"categoryID"`
-	Activityid  int              `json:"activityID"`
-	ProductType int              `json:"productType"`
-	ProductInfo datatypes.JSON   `json:"info"`
-	Brand       *MaddenBrands    `json:"brand,omitempty"`
-	Variants    []*MaddenVariant `json:"variants,omitempty"`
+	ID          int               `json:"id"`
+	Name        string            `json:"name"`
+	Modelnumber string            `json:"modelNumber"`
+	Imageurl    string            `json:"imageUrl"`
+	Brandid     int               `json:"brandID"`
+	Brand       *MaddenBrands     `json:"brand,omitempty"`
+	Categoryid  int               `json:"categoryID"`
+	Category    *MaddenCategories `json:"category"`
+	Activityid  int               `json:"activityID"`
+	ProductType int               `json:"productType"`
+	ProductInfo datatypes.JSON    `json:"info"`
+	Variants    []*MaddenVariant  `json:"variants,omitempty"`
 }
 
 // MaddenVariant holds variant data
