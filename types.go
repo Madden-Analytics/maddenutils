@@ -85,8 +85,8 @@ type PurchaseOrderItem struct {
 type PurchaseOrder struct {
 	ID                  int                 `json:"id,omitempty"`
 	OrderDate           time.Time           `json:"orderDate" gorm:"not null"`
-	DeliveryDate        time.Time           `json:"deliveryDate"`
-	DeliveryStatus      int                 `json:"deliveryStatus"` // 0 - Not Deliverd, 10 - Partially Delivered, 20 - Fully Delivered
+	DeliveryDate        null.Time           `json:"deliveryDate"`
+	DeliveryStatus      int                 `json:"deliveryStatus"` // 0 - Not Delivered, 10 - Partially Delivered, 20 - Fully Delivered
 	WarehouseExternalID string              `json:"externalWarehouseId"`
 	ExternalPurchaseNo  string              `json:"externalPurchaseNo"`
 	ExternalComment     string              `json:"externalComment"`
