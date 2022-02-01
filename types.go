@@ -137,6 +137,33 @@ type MaddenPIM struct {
 	VendorSKU         string         `json:"vendorSKU"`
 }
 
+// PIM - New type to hold pims data
+type PIM struct {
+	ProductName       string          `json:"productName"`
+	VariantName       string          `json:"variantName"`
+	SKU               string          `json:"sku"`
+	VendorSKU         string          `json:"vendorSKU"`
+	EAN               string          `json:"ean"`
+	BrandName         string          `json:"brandName"`
+	Category          string          `json:"category"`
+	Collection        string          `json:"collection"`
+	Season            string          `json:"season"`
+	Year              string          `json:"year"`
+	Size              string          `json:"size"`
+	Color             string          `json:"color"`
+	AgeGroup          string          `json:"ageGroup"`
+	Gender            string          `json:"gender"`
+	ModelNumber       string          `json:"modelNumber"`
+	StyleNumber       string          `json:"styleNumber"`
+	VariantExternalID string          `json:"variantExternalID"`
+	Key               string          `json:"variantKey"`
+	ProductType       int             `json:"productType"`
+	ProductID         int             `json:"productID"`
+	VariantID         int             `json:"variantID"`
+	Info              *datatypes.JSON `json:"info"`
+	Prices            Price           `json:"prices"`
+}
+
 // MaddenProduct holds main product
 type MaddenProduct struct {
 	ID          int               `json:"id"`
@@ -151,6 +178,63 @@ type MaddenProduct struct {
 	ProductType int               `json:"productType"`
 	ProductInfo datatypes.JSON    `json:"info"`
 	Variants    []*MaddenVariant  `json:"variants,omitempty"`
+}
+
+// Product - New updated product type
+type Product struct {
+	ID          int       `json:"id" example:"1"`
+	Name        string    `json:"name" example:"Petter"`
+	ModelNumber string    `json:"modelNumber" example:"123456"`
+	BrandID     uint      `json:"-"`
+	Brand       Brand     `json:"brand"`
+	CategoryID  uint      `json:"-"`
+	Category    Category  `json:"category"`
+	Variants    []Variant `json:"variants"`
+}
+
+// Variant - New updated variant type
+type Variant struct {
+	ID          uint   `json:"id"`
+	ProductID   uint   `json:"productID"`
+	SKU         string `json:"sku"`
+	VendorSKU   string `json:"vendorSKU"`
+	EAN         string `json:"ean"`
+	Key         string `json:"key"`
+	Name        string `json:"name"`
+	Size        string `json:"size"`
+	Color       string `json:"color"`
+	Collection  string `json:"collection"`
+	Season      string `json:"season"`
+	Year        string `json:"year"`
+	AgeGroup    string `json:"ageGroup"`
+	Gender      string `json:"gender"`
+	Active      bool   `json:"active"`
+	StyleNumber string `json:"styleNumber"`
+	ExternalID  string `json:"externalID"`
+	Source      int    `json:"source"`
+	Price       *Price `json:"prices"`
+	Meta        Meta   `json:"meta"`
+}
+
+// Price - Prices assosciated with the variant
+type Price struct {
+	SalePrice    float64 `json:"price" example:"1499.00"`
+	RRPPrice     float64 `json:"retailPrice" example:"1599.00"`
+	CostPrice    float64 `json:"costPrice" example:"420.00"`
+	CurrencyCode string  `json:"currencyCode" example:"SEK"`
+}
+
+// Meta - Read-only field with additional variant data
+type Meta struct {
+	BrandName    string `json:"brandName" example:"Acme"`
+	CategoryName string `json:"categoryName" example:"Sneakers"`
+	ModelNumber  string `json:"modelNumber" example:"123456"`
+}
+
+// Category - The category of the product
+type Category struct {
+	ID   uint   `json:"id"`
+	Name string `json:"name"`
 }
 
 // MaddenVariant holds variant data
@@ -204,6 +288,11 @@ type MaddenBrands struct {
 	Logourl  string   `json:"logoUrl"`
 	Synonyms []string `json:"synonyms"`
 	File     string   `json:"file"`
+}
+
+type Brand struct {
+	ID   uint   `json:"id" example:"1"`
+	Name string `json:"name" example:"Acme"`
 }
 
 // MaddenCategories holds category data
