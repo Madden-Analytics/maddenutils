@@ -194,26 +194,28 @@ type Product struct {
 
 // Variant - New updated variant type
 type Variant struct {
-	ID          uint   `json:"id"`
-	ProductID   uint   `json:"productID"`
-	SKU         string `json:"sku"`
-	VendorSKU   string `json:"vendorSKU"`
-	EAN         string `json:"ean"`
-	Key         string `json:"key"`
-	Name        string `json:"name"`
-	Size        string `json:"size"`
-	Color       string `json:"color"`
-	Collection  string `json:"collection"`
-	Season      string `json:"season"`
-	Year        string `json:"year"`
-	AgeGroup    string `json:"ageGroup"`
-	Gender      string `json:"gender"`
-	Active      bool   `json:"active"`
-	StyleNumber string `json:"styleNumber"`
-	ExternalID  string `json:"externalID"`
-	Source      int    `json:"source"`
-	Price       *Price `json:"prices"`
-	Meta        Meta   `json:"meta"`
+	ID                uint    `json:"id"`
+	ProductID         uint    `json:"productID"`
+	SKU               string  `json:"sku"`
+	VendorSKU         string  `json:"vendorSKU"`
+	EAN               string  `json:"ean"`
+	Key               string  `json:"key"`
+	Name              string  `json:"name"`
+	Size              string  `json:"size"`
+	Color             string  `json:"color"`
+	Collection        string  `json:"collection"`
+	Season            string  `json:"season"`
+	Year              string  `json:"year"`
+	AgeGroup          string  `json:"ageGroup"`
+	Gender            string  `json:"gender"`
+	Active            bool    `json:"active"`
+	StyleNumber       string  `json:"styleNumber"`
+	ExternalID        string  `json:"externalID"`
+	Source            int     `json:"source"`
+	CostPrice         float64 `json:"costPrice"`
+	CostPriceCurrency string  `json:"costPriceCurrency"`
+	Price             *Price  `json:"prices"`
+	Meta              Meta    `json:"meta"`
 }
 
 // Price - Prices assosciated with the variant
@@ -228,6 +230,7 @@ type Price struct {
 type Meta struct {
 	BrandName    string `json:"brandName"`
 	ProductName  string `json:"productName"`
+	ProductType  int    `json:"productType"`
 	CategoryName string `json:"categoryName"`
 	ModelNumber  string `json:"modelNumber"`
 }
