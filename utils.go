@@ -12,6 +12,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ssm"
+	zerowidth "github.com/trubitsyn/go-zero-width"
 )
 
 // GetAuth generates bearer token from Madden
@@ -139,4 +140,10 @@ func PutConfig(configName string, region string, value string) error {
 	})
 
 	return err
+}
+
+func CleanString(s string) string {
+	s = strings.TrimSpace(s)
+	s = zerowidth.RemoveZeroWidthCharacters(s)
+	return s
 }
