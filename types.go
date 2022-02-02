@@ -216,7 +216,7 @@ type Variant struct {
 	Source            int     `json:"source"`
 	CostPrice         float64 `json:"costPrice"`
 	CostPriceCurrency string  `json:"costPriceCurrency"`
-	Price             *Price  `json:"prices"`
+	Price             *Price  `json:"prices,omitempty"`
 	Meta              Meta    `json:"meta"`
 }
 
