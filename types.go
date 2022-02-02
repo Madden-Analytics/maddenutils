@@ -222,10 +222,10 @@ type Variant struct {
 
 // Price - Prices assosciated with the variant
 type Price struct {
-	SalePrice    float64 `json:"price"`
-	RRPPrice     float64 `json:"retailPrice"`
-	CostPrice    float64 `json:"costPrice"`
-	CurrencyCode string  `json:"currencyCode"`
+	SalePrice    float64 `json:"price,omitempty"`
+	RRPPrice     float64 `json:"retailPrice,omitempty"`
+	CostPrice    float64 `json:"costPrice,omitempty"`
+	CurrencyCode string  `json:"currencyCode,omitempty"`
 }
 
 // Meta - Read-only field with additional variant data
