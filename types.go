@@ -218,17 +218,18 @@ type Variant struct {
 
 // Price - Prices assosciated with the variant
 type Price struct {
-	SalePrice    float64 `json:"price" example:"1499.00"`
-	RRPPrice     float64 `json:"retailPrice" example:"1599.00"`
-	CostPrice    float64 `json:"costPrice" example:"420.00"`
-	CurrencyCode string  `json:"currencyCode" example:"SEK"`
+	SalePrice    float64 `json:"price"`
+	RRPPrice     float64 `json:"retailPrice"`
+	CostPrice    float64 `json:"costPrice"`
+	CurrencyCode string  `json:"currencyCode"`
 }
 
 // Meta - Read-only field with additional variant data
 type Meta struct {
-	BrandName    string `json:"brandName" example:"Acme"`
-	CategoryName string `json:"categoryName" example:"Sneakers"`
-	ModelNumber  string `json:"modelNumber" example:"123456"`
+	BrandName    string `json:"brandName"`
+	ProductName  string `json:"productName"`
+	CategoryName string `json:"categoryName"`
+	ModelNumber  string `json:"modelNumber"`
 }
 
 // Category - The category of the product
