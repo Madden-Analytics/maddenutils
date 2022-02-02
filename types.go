@@ -161,6 +161,8 @@ type PIM struct {
 	ProductID         int             `json:"productID"`
 	VariantID         int             `json:"variantID"`
 	Info              *datatypes.JSON `json:"info"`
+	CostPrice         float64         `json:"costPrice"`
+	CostPriceCurrency string          `json:"costPriceCurrency"`
 	Prices            Price           `json:"prices"`
 }
 
