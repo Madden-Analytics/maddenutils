@@ -184,14 +184,15 @@ type MaddenProduct struct {
 
 // Product - New updated product type
 type Product struct {
-	ID          int       `json:"id" example:"1"`
-	Name        string    `json:"name" example:"Petter"`
-	ModelNumber string    `json:"modelNumber" example:"123456"`
-	BrandID     uint      `json:"-"`
-	Brand       Brand     `json:"brand"`
-	CategoryID  uint      `json:"-"`
-	Category    Category  `json:"category"`
-	Variants    []Variant `json:"variants"`
+	ID          int            `json:"id" example:"1"`
+	Name        string         `json:"name" example:"Petter"`
+	ModelNumber string         `json:"modelNumber" example:"123456"`
+	BrandID     uint           `json:"-"`
+	Brand       Brand          `json:"brand"`
+	CategoryID  uint           `json:"-"`
+	Category    Category       `json:"category"`
+	ProductInfo datatypes.JSON `json:"info"`
+	Variants    []Variant      `json:"variants"`
 }
 
 // Variant - New updated variant type
@@ -230,11 +231,13 @@ type Price struct {
 
 // Meta - Read-only field with additional variant data
 type Meta struct {
-	BrandName    string `json:"brandName"`
-	ProductName  string `json:"productName"`
-	ProductType  int    `json:"productType"`
-	CategoryName string `json:"categoryName"`
-	ModelNumber  string `json:"modelNumber"`
+	BrandName     string         `json:"brandName"`
+	BrandSynonyms []string       `json:"brandSynonyms"`
+	ProductName   string         `json:"productName"`
+	ProductType   int            `json:"productType"`
+	CategoryName  string         `json:"categoryName"`
+	ModelNumber   string         `json:"modelNumber"`
+	ProductInfo   datatypes.JSON `json:"info"`
 }
 
 // Category - The category of the product
@@ -297,8 +300,9 @@ type MaddenBrands struct {
 }
 
 type Brand struct {
-	ID   uint   `json:"id" example:"1"`
-	Name string `json:"name" example:"Acme"`
+	ID       uint     `json:"id" example:"1"`
+	Name     string   `json:"name" example:"Acme"`
+	Synonyms []string `json:"synonyms"`
 }
 
 // MaddenCategories holds category data
