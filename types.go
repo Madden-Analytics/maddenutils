@@ -139,31 +139,31 @@ type MaddenPIM struct {
 
 // PIM - New type to hold pims data
 type PIM struct {
-	ProductName       string          `json:"productName"`
-	VariantName       string          `json:"variantName"`
-	SKU               string          `json:"sku"`
-	VendorSKU         string          `json:"vendorSKU"`
-	EAN               string          `json:"ean"`
-	BrandName         string          `json:"brandName"`
-	Category          string          `json:"category"`
-	Collection        string          `json:"collection"`
-	Season            string          `json:"season"`
-	Year              string          `json:"year"`
-	Size              string          `json:"size"`
-	Color             string          `json:"color"`
-	AgeGroup          string          `json:"ageGroup"`
-	Gender            string          `json:"gender"`
-	ModelNumber       string          `json:"modelNumber"`
-	StyleNumber       string          `json:"styleNumber"`
-	VariantExternalID string          `json:"variantExternalID"`
-	Key               string          `json:"variantKey"`
-	ProductType       int             `json:"productType"`
-	ProductID         int             `json:"productID"`
-	VariantID         int             `json:"variantID"`
-	Info              *datatypes.JSON `json:"info"`
-	CostPrice         float64         `json:"costPrice"`
-	CostPriceCurrency string          `json:"costPriceCurrency"`
-	Prices            Price           `json:"prices"`
+	ProductName       string         `json:"productName"`
+	VariantName       string         `json:"variantName"`
+	SKU               string         `json:"sku"`
+	VendorSKU         string         `json:"vendorSKU"`
+	EAN               string         `json:"ean"`
+	BrandName         string         `json:"brandName"`
+	Category          string         `json:"category"`
+	Collection        string         `json:"collection"`
+	Season            string         `json:"season"`
+	Year              string         `json:"year"`
+	Size              string         `json:"size"`
+	Color             string         `json:"color"`
+	AgeGroup          string         `json:"ageGroup"`
+	Gender            string         `json:"gender"`
+	ModelNumber       string         `json:"modelNumber"`
+	StyleNumber       string         `json:"styleNumber"`
+	VariantExternalID string         `json:"variantExternalID"`
+	Key               string         `json:"variantKey"`
+	ProductType       int            `json:"productType"`
+	ProductID         int            `json:"productID"`
+	VariantID         int            `json:"variantID"`
+	Info              datatypes.JSON `json:"info"`
+	CostPrice         float64        `json:"costPrice"`
+	CostPriceCurrency string         `json:"costPriceCurrency"`
+	Prices            Price          `json:"prices"`
 }
 
 // MaddenProduct holds main product
