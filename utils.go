@@ -2,6 +2,7 @@ package maddenutils
 
 import (
 	"crypto/md5"
+	"encoding/base64"
 	"encoding/hex"
 	"encoding/json"
 	"log"
@@ -39,6 +40,14 @@ func GetAuth(baseURL string, accountID string, key string) string {
 	}
 
 	return maddenAuth.AccessToken
+}
+
+// GetBasicToken - Hashes a basic auth token
+func GetBasicToken(user string, password string) string {
+
+	auth := user + ":" + password
+	return base64.StdEncoding.EncodeToString([]byte(auth))
+
 }
 
 // BatchTransactions batches transaction struct into given size
