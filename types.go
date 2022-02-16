@@ -35,6 +35,7 @@ type MaddenTransactionItems struct {
 	MoneyDiscount     float64 `json:"moneyDiscount"`
 	ExternalID        string  `json:"externalID"`
 	ProductType       int     `json:"productType,omitempty"`
+	FulfillmentType   int     `json:"fulfillmentType"`
 }
 
 // MaddenTransaction holds transaction from Madden
@@ -376,6 +377,7 @@ type WholesaleTransactionItem struct {
 	StyleNumber       string                   `json:"styleNumber"`
 	VariantName       string                   `json:"variantName"`
 	ProductType       int                      `json:"productType"`
+	FulfillmentType   int                      `json:"fulfillmentType"`
 	ShipmentEvent     []WholesaleShipmentEvent `json:"shipments"`
 }
 
