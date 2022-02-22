@@ -164,6 +164,7 @@ type PIM struct {
 	Info              datatypes.JSON `json:"info"`
 	CostPrice         float64        `json:"costPrice"`
 	CostPriceCurrency string         `json:"costPriceCurrency"`
+	Active            bool           `json:"active"`
 	Prices            Price          `json:"prices"`
 }
 
