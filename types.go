@@ -145,6 +145,7 @@ type PIM struct {
 	SKU               string         `json:"sku"`
 	VendorSKU         string         `json:"vendorSKU"`
 	EAN               string         `json:"ean"`
+	Eans              []EAN          `json:"eanSynonyms"`
 	BrandName         string         `json:"brandName"`
 	Category          string         `json:"category"`
 	Collection        string         `json:"collection"`
@@ -166,6 +167,10 @@ type PIM struct {
 	CostPriceCurrency string         `json:"costPriceCurrency"`
 	Active            bool           `json:"active"`
 	Prices            Price          `json:"prices"`
+}
+
+type EAN struct {
+	FromEAN string `json:"ean"`
 }
 
 // MaddenProduct holds main product
