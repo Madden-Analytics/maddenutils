@@ -170,7 +170,7 @@ type PIM struct {
 }
 
 type EAN struct {
-	FromEAN string `json:"ean"`
+	FromEAN string `json:"ean,omitempty"`
 }
 
 // MaddenProduct holds main product
