@@ -145,7 +145,7 @@ type PIM struct {
 	SKU               string         `json:"sku"`
 	VendorSKU         string         `json:"vendorSKU"`
 	EAN               string         `json:"ean"`
-	Eans              []EAN          `json:"eanSynonyms"`
+	Eans              []EAN          `json:"eanSynonyms,omitempty"`
 	BrandName         string         `json:"brandName"`
 	Category          string         `json:"category"`
 	Collection        string         `json:"collection"`
