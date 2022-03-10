@@ -398,7 +398,7 @@ type WholesaleShipmentEvent struct {
 type StoreTrafficEvent struct {
 	ID                    int       `json:"id,omitempty"`
 	EventTime             time.Time `json:"eventTime"`
-	Name                  string    `json:"name"`
+	Name                  string    `json:"name,omitempty"`
 	StoreID               string    `json:"storeID,omitempty"`
 	StoreTrafficCounterID string    `json:"storeTrafficCounterID,omitempty"`
 	IncomingTraffic       int       `json:"incomingTraffic"`
