@@ -151,6 +151,25 @@ func PutConfig(configName string, region string, value string) error {
 	return err
 }
 
+// PutConfig - Updates config value (JSON) to AWS Parameter Store
+func DeleteConfig(configName string, region string) error {
+	sess, err := session.NewSessionWithOptions(session.Options{
+		Config:            aws.Config{Region: aws.String(region)},
+		SharedConfigState: session.SharedConfigEnable,
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	ssmsvc := ssm.New(sess, aws.NewConfig().WithRegion(region))
+
+	_, err = ssmsvc.DeleteParameter(&ssm.DeleteParameterInput{
+		Name: aws.String(configName),
+	})
+
+	return err
+}
+
 func CleanString(s string) string {
 	s = strings.TrimSpace(s)
 	s = zerowidth.RemoveZeroWidthCharacters(s)
