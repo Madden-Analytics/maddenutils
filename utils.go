@@ -76,9 +76,9 @@ func BatchStocks(batchSize int, batchSlice []Stock) [][]Stock {
 }
 
 // BatchPIM batches pim struct into given size
-func BatchProducts(batchSize int, batchSlice []Products) [][]Products {
+func BatchProducts(batchSize int, batchSlice []Product) [][]Product {
 
-	batches := make([][]Products, 0, (len(batchSlice)+batchSize-1)/batchSize)
+	batches := make([][]Product, 0, (len(batchSlice)+batchSize-1)/batchSize)
 	for batchSize < len(batchSlice) {
 		batchSlice, batches = batchSlice[batchSize:], append(batches, batchSlice[0:batchSize:batchSize])
 	}
