@@ -73,6 +73,7 @@ type PurchaseOrderItem struct {
 	ProductName        string          `json:"productName"`
 	Sku                string          `json:"sku"`
 	EAN                string          `json:"ean"`
+	Key                string          `json:"key"`
 	BrandName          string          `json:"brandName"`
 	Quantity           int             `json:"quantity"`
 	TotalPriceNet      float64         `json:"totalPriceNet"`
