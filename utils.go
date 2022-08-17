@@ -19,7 +19,7 @@ import (
 // GetAuth generates bearer token from Madden
 func GetAuth(baseURL string, accountID string, key string) string {
 
-	var maddenAuth MaddenBearer
+	var maddenAuth Bearer
 	maddenKey := APIKey{
 		AccountID: accountID,
 		APIKey:    key,
@@ -28,7 +28,8 @@ func GetAuth(baseURL string, accountID string, key string) string {
 	maddenKeyJSON, _ := json.Marshal(maddenKey)
 
 	// Get Madden Bearer Token
-	statusCode, maddenAuthResponse := Post(
+	statusCode, maddenAuthResponse := Request(
+		"POST",
 		baseURL+"/auth",
 		"",
 		maddenKeyJSON,
@@ -51,9 +52,9 @@ func GetBasicToken(user string, password string) string {
 }
 
 // BatchTransactions batches transaction struct into given size
-func BatchTransactions(batchSize int, batchSlice []MaddenTransaction) [][]MaddenTransaction {
+func BatchTransactions(batchSize int, batchSlice []Transaction) [][]Transaction {
 
-	batches := make([][]MaddenTransaction, 0, (len(batchSlice)+batchSize-1)/batchSize)
+	batches := make([][]Transaction, 0, (len(batchSlice)+batchSize-1)/batchSize)
 	for batchSize < len(batchSlice) {
 		batchSlice, batches = batchSlice[batchSize:], append(batches, batchSlice[0:batchSize:batchSize])
 	}
@@ -63,9 +64,9 @@ func BatchTransactions(batchSize int, batchSlice []MaddenTransaction) [][]Madden
 }
 
 // BatchStocks batches stock struct into given size
-func BatchStocks(batchSize int, batchSlice []MaddenStock) [][]MaddenStock {
+func BatchStocks(batchSize int, batchSlice []Stock) [][]Stock {
 
-	batches := make([][]MaddenStock, 0, (len(batchSlice)+batchSize-1)/batchSize)
+	batches := make([][]Stock, 0, (len(batchSlice)+batchSize-1)/batchSize)
 	for batchSize < len(batchSlice) {
 		batchSlice, batches = batchSlice[batchSize:], append(batches, batchSlice[0:batchSize:batchSize])
 	}
@@ -75,9 +76,9 @@ func BatchStocks(batchSize int, batchSlice []MaddenStock) [][]MaddenStock {
 }
 
 // BatchPIM batches pim struct into given size
-func BatchPIM(batchSize int, batchSlice []MaddenPIM) [][]MaddenPIM {
+func BatchProducts(batchSize int, batchSlice []Products) [][]Products {
 
-	batches := make([][]MaddenPIM, 0, (len(batchSlice)+batchSize-1)/batchSize)
+	batches := make([][]Products, 0, (len(batchSlice)+batchSize-1)/batchSize)
 	for batchSize < len(batchSlice) {
 		batchSlice, batches = batchSlice[batchSize:], append(batches, batchSlice[0:batchSize:batchSize])
 	}

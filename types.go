@@ -7,12 +7,13 @@ import (
 	"gorm.io/datatypes"
 )
 
-// MaddenTransactionItems holds transcation items from Madden
-type MaddenTransactionItems struct {
+// TransactionItems holds transcation items from Madden
+type TransactionItems struct {
 	ProductName       string  `json:"productName"`
 	VariantName       string  `json:"variantName"`
 	Sku               string  `json:"sku"`
 	Ean               string  `json:"ean"`
+	Key               string  `json:"key"`
 	VendorSKU         string  `json:"vendorSKU"`
 	BrandName         string  `json:"brandName"`
 	Supplier          string  `json:"supplier,omitempty"`
@@ -39,25 +40,25 @@ type MaddenTransactionItems struct {
 }
 
 // MaddenTransaction holds transaction from Madden
-type MaddenTransaction struct {
-	TransactionDate         time.Time                `json:"transactionDate"`
-	TransactionID           int                      `json:"id,omitempty"`
-	CompletedAt             null.Time                `json:"completed_at"`
-	CancelledAt             null.Time                `json:"cancelled_at"`
-	ExternalStoreID         string                   `json:"externalStoreId"`
-	ExternalTransactionID   string                   `json:"externalTransactionId"`
-	MoneyFinalNet           float64                  `json:"moneyFinalNet"`
-	MoneyFinalVat           float64                  `json:"moneyFinalVat"`
-	MoneyTotalGrossRoundOff float64                  `json:"MoneyTotalGrossRoundOff"`
-	CurrencyCode            string                   `json:"currencyCode"`
-	Market                  string                   `json:"market"`
-	ExternalRowID           string                   `json:"externalRowId"`
-	CartDiscount            float64                  `json:"cartDiscount"`
-	ShippingName            null.String              `json:"shippingName"`
-	ShippingCost            null.Float               `json:"shippingCost"`
-	Seller                  seller                   `json:"seller"`
-	Payments                []payments               `json:"payments"`
-	Items                   []MaddenTransactionItems `json:"items"`
+type Transaction struct {
+	TransactionDate         time.Time          `json:"transactionDate"`
+	TransactionID           int                `json:"id,omitempty"`
+	CompletedAt             null.Time          `json:"completed_at"`
+	CancelledAt             null.Time          `json:"cancelled_at"`
+	ExternalStoreID         string             `json:"externalStoreId"`
+	ExternalTransactionID   string             `json:"externalTransactionId"`
+	MoneyFinalNet           float64            `json:"moneyFinalNet"`
+	MoneyFinalVat           float64            `json:"moneyFinalVat"`
+	MoneyTotalGrossRoundOff float64            `json:"MoneyTotalGrossRoundOff"`
+	CurrencyCode            string             `json:"currencyCode"`
+	Market                  string             `json:"market"`
+	ExternalRowID           string             `json:"externalRowId"`
+	CartDiscount            float64            `json:"cartDiscount"`
+	ShippingName            null.String        `json:"shippingName"`
+	ShippingCost            null.Float         `json:"shippingCost"`
+	Seller                  Seller             `json:"seller"`
+	Payments                []Payments         `json:"payments"`
+	Items                   []TransactionItems `json:"items"`
 }
 
 // DeliveryEvent holds each POI deliveries
@@ -94,48 +95,23 @@ type PurchaseOrder struct {
 	Items               []PurchaseOrderItem `json:"items"`
 }
 
-type seller struct {
+type Seller struct {
 	Name string `json:"name"`
 }
 
-type payments struct {
+type Payments struct {
 	Name  string  `json:"name"`
 	Value float64 `json:"value"`
 }
 
 // MaddenStock holds stock items
-type MaddenStock struct {
+type Stock struct {
 	Sku       string `json:"sku"`
 	EAN       string `json:"ean"`
+	Key       string `json:"key"`
 	BrandName string `json:"brandName"`
 	Quantity  int    `json:"quantity"`
 	Supplier  string `json:"supplier,omitempty"`
-}
-
-// MaddenPIM holds product data
-type MaddenPIM struct {
-	ProductID         int            `json:"productID,omitempty"`
-	VariantID         int            `json:"variantID,omitempty"`
-	ProductName       string         `json:"productName"`
-	VariantName       string         `json:"variantName"`
-	Sku               string         `json:"sku"`
-	EAN               string         `json:"ean"`
-	BrandName         string         `json:"brandName"`
-	Category          string         `json:"category"`
-	Collection        string         `json:"collection"`
-	Season            string         `json:"season"`
-	Year              string         `json:"year"`
-	Size              string         `json:"size"`
-	Color             string         `json:"color"`
-	AgeGroup          string         `json:"ageGroup"`
-	Gender            string         `json:"gender"`
-	ModelNumber       string         `json:"modelNumber"`
-	StyleNumber       string         `json:"styleNumber"`
-	VariantExternalID string         `json:"variantExternalID"`
-	VariantKey        string         `json:"variantKey"`
-	ProductType       int            `json:"productType"`
-	ProductInfo       datatypes.JSON `json:"info"`
-	VendorSKU         string         `json:"vendorSKU"`
 }
 
 // Products - Holds all SKU Data
@@ -157,7 +133,7 @@ type Products struct {
 	Gender            string         `json:"gender"`
 	ProductGroupID    string         `json:"productGroupID"`
 	VariantGroupID    string         `json:"variantGroupID"`
-	VariantExternalID string         `json:"variantExternalID"`
+	ExternalID        string         `json:"externalID"`
 	Key               string         `json:"key"`
 	SkuSynonym        []string       `json:"skuSynonyms"`
 	ProductType       int            `json:"productType"`
@@ -180,28 +156,28 @@ type Category struct {
 	Name string `json:"name"`
 }
 
-type MaddenStores struct {
-	Name            string            `json:"name"`
-	ExternalStoreID string            `json:"externalStoreId"`
-	ChannelType     int               `json:"channelType"` //enum
-	Adress          string            `json:"adress"`
-	Adress2         string            `json:"adress2"`
-	Zip             string            `json:"zip"`
-	City            string            `json:"city"`
-	State           string            `json:"state"`
-	CountryCode     string            `json:"countryCode"`
-	CurrencyCode    string            `json:"currencyCode"`
-	Warehouses      []MaddenWarehouse `json:"warehouses"`
+type Stores struct {
+	Name            string      `json:"name"`
+	ExternalStoreID string      `json:"externalStoreId"`
+	ChannelType     int         `json:"channelType"` //enum
+	Adress          string      `json:"adress"`
+	Adress2         string      `json:"adress2"`
+	Zip             string      `json:"zip"`
+	City            string      `json:"city"`
+	State           string      `json:"state"`
+	CountryCode     string      `json:"countryCode"`
+	CurrencyCode    string      `json:"currencyCode"`
+	Warehouses      []Warehouse `json:"warehouses"`
 }
 
 // Warehouse serves WarehouseItems too some Stores
-type MaddenWarehouse struct {
+type Warehouse struct {
 	Name                string `json:"name"`
 	WarehouseExternalID string `json:"externalId"`
 }
 
 // MaddenBrands hold brand data
-type MaddenBrands struct {
+type Brands struct {
 	ID       int      `json:"id"`
 	Name     string   `json:"name"`
 	Logourl  string   `json:"logoUrl"`
@@ -216,7 +192,7 @@ type Brand struct {
 }
 
 // MaddenCategories holds category data
-type MaddenCategories struct {
+type Categories struct {
 	ID       int      `json:"id"`
 	Name     string   `json:"name"`
 	Synonyms []string `json:"synonyms"`
@@ -224,7 +200,7 @@ type MaddenCategories struct {
 }
 
 // MaddenBearer holds the madden token reponse
-type MaddenBearer struct {
+type Bearer struct {
 	TokenType   string `json:"tokenType"`
 	AccessToken string `json:"accessToken"`
 }
@@ -264,6 +240,7 @@ type WholesaleTransactionItem struct {
 	SKU               string                   `json:"sku"`
 	VendorSKU         string                   `json:"vendorSKU"`
 	EAN               string                   `json:"ean"`
+	Key               string                   `json:"key"`
 	BrandName         string                   `json:"brandName"`
 	Category          string                   `json:"category"`
 	Collection        string                   `json:"collection"`
