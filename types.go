@@ -8,7 +8,7 @@ import (
 )
 
 // TransactionItems holds transcation items from Madden
-type TransactionItems struct {
+type TransactionItem struct {
 	ProductName       string  `json:"productName"`
 	VariantName       string  `json:"variantName"`
 	Sku               string  `json:"sku"`
@@ -41,24 +41,24 @@ type TransactionItems struct {
 
 // MaddenTransaction holds transaction from Madden
 type Transaction struct {
-	TransactionDate         time.Time          `json:"transactionDate"`
-	TransactionID           int                `json:"id,omitempty"`
-	CompletedAt             null.Time          `json:"completed_at"`
-	CancelledAt             null.Time          `json:"cancelled_at"`
-	ExternalStoreID         string             `json:"externalStoreId"`
-	ExternalTransactionID   string             `json:"externalTransactionId"`
-	MoneyFinalNet           float64            `json:"moneyFinalNet"`
-	MoneyFinalVat           float64            `json:"moneyFinalVat"`
-	MoneyTotalGrossRoundOff float64            `json:"MoneyTotalGrossRoundOff"`
-	CurrencyCode            string             `json:"currencyCode"`
-	Market                  string             `json:"market"`
-	ExternalRowID           string             `json:"externalRowId"`
-	CartDiscount            float64            `json:"cartDiscount"`
-	ShippingName            null.String        `json:"shippingName"`
-	ShippingCost            null.Float         `json:"shippingCost"`
-	Seller                  Seller             `json:"seller"`
-	Payments                []Payments         `json:"payments"`
-	Items                   []TransactionItems `json:"items"`
+	TransactionDate         time.Time         `json:"transactionDate"`
+	TransactionID           int               `json:"id,omitempty"`
+	CompletedAt             null.Time         `json:"completed_at"`
+	CancelledAt             null.Time         `json:"cancelled_at"`
+	ExternalStoreID         string            `json:"externalStoreId"`
+	ExternalTransactionID   string            `json:"externalTransactionId"`
+	MoneyFinalNet           float64           `json:"moneyFinalNet"`
+	MoneyFinalVat           float64           `json:"moneyFinalVat"`
+	MoneyTotalGrossRoundOff float64           `json:"MoneyTotalGrossRoundOff"`
+	CurrencyCode            string            `json:"currencyCode"`
+	Market                  string            `json:"market"`
+	ExternalRowID           string            `json:"externalRowId"`
+	CartDiscount            float64           `json:"cartDiscount"`
+	ShippingName            null.String       `json:"shippingName"`
+	ShippingCost            null.Float        `json:"shippingCost"`
+	Seller                  Seller            `json:"seller"`
+	Payments                []Payment         `json:"payments"`
+	Items                   []TransactionItem `json:"items"`
 }
 
 // DeliveryEvent holds each POI deliveries
@@ -100,7 +100,7 @@ type Seller struct {
 	Name string `json:"name"`
 }
 
-type Payments struct {
+type Payment struct {
 	Name  string  `json:"name"`
 	Value float64 `json:"value"`
 }
@@ -116,7 +116,7 @@ type Stock struct {
 }
 
 // Products - Holds all SKU Data
-type Products struct {
+type Product struct {
 	ID                int            `json:"id"`
 	ProductName       string         `json:"productName"`
 	VariantName       string         `json:"variantName"`
@@ -151,7 +151,7 @@ type Products struct {
 	Supplier          string         `json:"supplier"`
 }
 
-type Stores struct {
+type Store struct {
 	Name            string      `json:"name"`
 	ExternalStoreID string      `json:"externalStoreId"`
 	ChannelType     int         `json:"channelType"` //enum
