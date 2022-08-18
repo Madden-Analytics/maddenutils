@@ -151,12 +151,6 @@ type Products struct {
 	Supplier          string         `json:"supplier"`
 }
 
-// Category - The category of the product
-type Category struct {
-	ID   uint   `json:"id"`
-	Name string `json:"name"`
-}
-
 type Stores struct {
 	Name            string      `json:"name"`
 	ExternalStoreID string      `json:"externalStoreId"`
@@ -177,27 +171,60 @@ type Warehouse struct {
 	WarehouseExternalID string `json:"externalId"`
 }
 
-// MaddenBrands hold brand data
-type Brands struct {
-	ID       int      `json:"id"`
-	Name     string   `json:"name"`
-	Logourl  string   `json:"logoUrl"`
-	Synonyms []string `json:"synonyms"`
-	File     string   `json:"file"`
+type SKU struct {
+	ID                int            `json:"id"`
+	ProductName       string         `json:"productName"`
+	ProductGroupID    string         `json:"productGroupID"`
+	Brand             Brand          `json:"brand"`
+	Category          Category       `json:"category"`
+	ProductType       int            `json:"productType"`
+	Info              datatypes.JSON `json:"info"`
+	Sku               string         `json:"sku"`
+	VendorSKU         string         `json:"vendorSKU"`
+	Ean               string         `json:"ean"`
+	Key               string         `json:"key"`
+	SkuSynonyms       []SkuSynonym   `json:"skuSynonyms"`
+	VariantName       string         `json:"variantName"`
+	Size              string         `json:"size"`
+	Color             string         `json:"color"`
+	Collection        string         `json:"collection"`
+	Season            string         `json:"season"`
+	Year              string         `json:"year"`
+	AgeGroup          string         `json:"ageGroup"`
+	Gender            string         `json:"gender"`
+	Active            bool           `json:"active"`
+	VariantGroupID    string         `json:"variantGroupID"`
+	ExternalID        string         `json:"externalID"`
+	Source            int            `json:"source"`
+	CostPrice         int            `json:"costPrice"`
+	CostPriceCurrency string         `json:"costPriceCurrency"`
+	Price             int            `json:"price"`
+	PriceCurrency     string         `json:"priceCurrency"`
+	Moq               int            `json:"moq"`
+	LeadTime          int            `json:"leadTime"`
+	Supplier          string         `json:"supplier"`
 }
 
+// Brand - The Brand and synonyms of the product
 type Brand struct {
 	ID       uint     `json:"id" example:"1"`
 	Name     string   `json:"name" example:"Acme"`
 	Synonyms []string `json:"synonyms"`
 }
 
-// MaddenCategories holds category data
-type Categories struct {
-	ID       int      `json:"id"`
-	Name     string   `json:"name"`
-	Synonyms []string `json:"synonyms"`
-	ParentID int      `json:"parent_id"`
+// Category - The category of the product
+type Category struct {
+	ID   uint   `json:"id"`
+	Name string `json:"name"`
+}
+
+// Synonyms - Hold the sku_synonyms of a product
+type SkuSynonym struct {
+	ID            int    `json:"id"`
+	FromKey       string `json:"FromKey"`
+	FromAccountID string `json:"FromAccountID"`
+	SkuID         int    `json:"skuId"`
+	ToAccountID   string `json:"ToAccountID"`
 }
 
 // MaddenBearer holds the madden token reponse
