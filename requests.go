@@ -3,7 +3,7 @@ package maddenutils
 
 import (
 	"bytes"
-	"io/ioutil"
+	"io"
 	"net/http"
 
 	log "github.com/sirupsen/logrus"
@@ -33,7 +33,7 @@ func Request(requestType string, endpoint string, auth string, json []byte) (int
 	}
 	defer resp.Body.Close()
 
-	response, err := ioutil.ReadAll(resp.Body)
+	response, err := io.ReadAll(resp.Body)
 	if err != nil {
 		log.WithFields(log.Fields{
 			"requesttype":  requestType,
