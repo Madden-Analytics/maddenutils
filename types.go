@@ -61,6 +61,74 @@ type Transaction struct {
 	Items                   []TransactionItem `json:"items"`
 }
 
+type NewTransaction struct {
+	TransactionDate       time.Time              `json:"transactionDate"`
+	TransactionID         int                    `json:"id,omitempty"`
+	CompletedAt           null.Time              `json:"completed_at"`
+	CancelledAt           null.Time              `json:"cancelled_at"`
+	ExternalStoreID       string                 `json:"externalStoreID"`
+	ExternalTransactionID string                 `json:"externalTransactionID"`
+	ExternalParentID      string                 `json:"externalParentID"`
+	CurrencyCode          string                 `json:"currencyCode"`
+	ExternalRowID         string                 `json:"externalRowId"`
+	Market                string                 `json:"market"`
+	ShippingName          null.String            `json:"shippingName"`
+	ShippingCost          null.Float             `json:"shippingCost"`
+	TransactionType       TransactionType        `json:"transactionType"`
+	CustomerName          string                 `json:"customerName"`
+	ExternalCustomerID    string                 `json:"externalCustomerID"`
+	AskedDeliveryDate     null.Time              `json:"askedDeliveryDate"`
+	Payments              []TransactionStatement `json:"payments"`
+	Items                 []NewTransactionItem   `json:"items"`
+}
+
+type TransactionStatement struct {
+	Key           string                   `json:"key"`
+	Name          string                   `json:"name"`
+	StatementType TransactionStatementType `json:"statementType"`
+	PriceNet      float64                  `json:"price"`
+	PriceVat      float64                  `json:"priceVat"`
+}
+
+type NewTransactionItem struct {
+	ProductName       string                    `json:"productName"`
+	VariantName       string                    `json:"variantName"`
+	SKU               string                    `json:"sku"`
+	EAN               string                    `json:"ean"`
+	Key               string                    `json:"key"`
+	VendorSKU         string                    `json:"vendorSKU"`
+	BrandName         string                    `json:"brandName"`
+	Supplier          string                    `json:"supplier,omitempty"`
+	Category          string                    `json:"category"`
+	Collection        string                    `json:"collection"`
+	Season            string                    `json:"season"`
+	Year              string                    `json:"year"`
+	Size              string                    `json:"size"`
+	Color             string                    `json:"color"`
+	AgeGroup          string                    `json:"ageGroup"`
+	Gender            string                    `json:"gender"`
+	ModelNumber       string                    `json:"modelNumber"`
+	StyleNumber       string                    `json:"styleNumber"`
+	Quantity          int                       `json:"quantity"`
+	VatValue          int                       `json:"vatValue"`
+	MoneyItemTotalNet float64                   `json:"moneyItemTotalNet"`
+	MoneyItemTotalVat float64                   `json:"moneyItemTotalVat"`
+	CostPrice         float64                   `json:"costPrice"`
+	CostPriceCurency  string                    `json:"costPriceCurrency"`
+	MoneyDiscount     float64                   `json:"moneyDiscount"`
+	ExternalID        string                    `json:"externalID"`
+	ProductType       int                       `json:"productType,omitempty"`
+	FulfillmentType   int                       `json:"fulfillmentType"`
+	Shipments         []TransactionItemShipment `json:"shipments"`
+}
+
+type TransactionItemShipment struct {
+	Quantity            int       `json:"quantity"`
+	Date                time.Time `json:"shipmentDate"`
+	ShipmentID          string    `json:"shipmentID"`
+	ExternalWarehouseID string    `json:"externalWarehouseID"`
+}
+
 // DeliveryEvent holds each POI deliveries
 type DeliveryEvent struct {
 	Quantity   int       `json:"quantity"`
