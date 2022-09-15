@@ -79,7 +79,7 @@ type NewTransaction struct {
 	CustomerName          string                 `json:"customerName"`
 	ExternalCustomerID    string                 `json:"externalCustomerID"`
 	AskedDeliveryDate     null.Time              `json:"askedDeliveryDate"`
-	Statements            []TransactionStatement `json:"payments"`
+	Statements            []TransactionStatement `json:"statements"`
 	Items                 []NewTransactionItem   `json:"items"`
 }
 
