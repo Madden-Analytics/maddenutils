@@ -2,11 +2,22 @@ package maddenutils
 
 import "strconv"
 
+type TransactionChannel uint8
+
+const (
+	D2C TransactionChannel = iota + 1
+	D2B
+)
+
+func (t TransactionChannel) String() string {
+	return strconv.Itoa(int(t))
+}
+
 type TransactionType uint8
 
 const (
-	D2C TransactionType = iota + 1
-	D2B
+	Sale TransactionType = iota + 1
+	Return
 )
 
 func (t TransactionType) String() string {

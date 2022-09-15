@@ -75,6 +75,7 @@ type NewTransaction struct {
 	ShippingName          null.String            `json:"shippingName"`
 	ShippingCost          null.Float             `json:"shippingCost"`
 	TransactionType       TransactionType        `json:"transactionType"`
+	TransactionChannel    TransactionChannel     `json:"transactionChannel"`
 	CustomerName          string                 `json:"customerName"`
 	ExternalCustomerID    string                 `json:"externalCustomerID"`
 	AskedDeliveryDate     null.Time              `json:"askedDeliveryDate"`
@@ -83,10 +84,9 @@ type NewTransaction struct {
 }
 
 type TransactionStatement struct {
-	Key           string                   `json:"key"`
 	Name          string                   `json:"name"`
 	StatementType TransactionStatementType `json:"statementType"`
-	PriceNet      float64                  `json:"price"`
+	PriceNet      float64                  `json:"priceNet"`
 	PriceVat      float64                  `json:"priceVat"`
 }
 
