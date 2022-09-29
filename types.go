@@ -68,7 +68,7 @@ type NewTransaction struct {
 	CancelledAt           null.Time              `json:"cancelled_at"`
 	ExternalStoreID       string                 `json:"externalStoreID"`
 	ExternalTransactionID string                 `json:"externalTransactionID"`
-	ExternalParentID      string                 `json:"externalParentID"`
+	ExternalParentID      *string                `json:"externalParentID"`
 	CurrencyCode          string                 `json:"currencyCode"`
 	ExternalRowID         string                 `json:"externalRowId"`
 	Market                string                 `json:"market"`
