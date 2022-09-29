@@ -72,8 +72,6 @@ type NewTransaction struct {
 	CurrencyCode          string                 `json:"currencyCode"`
 	ExternalRowID         string                 `json:"externalRowId"`
 	Market                string                 `json:"market"`
-	ShippingName          null.String            `json:"shippingName"`
-	ShippingCost          null.Float             `json:"shippingCost"`
 	TransactionType       TransactionType        `json:"transactionType"`
 	TransactionChannel    TransactionChannel     `json:"transactionChannel"`
 	CustomerName          string                 `json:"customerName"`
@@ -91,35 +89,36 @@ type TransactionStatement struct {
 }
 
 type NewTransactionItem struct {
-	ProductName       string                    `json:"productName"`
-	VariantName       string                    `json:"variantName"`
-	SKU               string                    `json:"sku"`
-	EAN               string                    `json:"ean"`
-	Key               string                    `json:"key"`
-	VendorSKU         string                    `json:"vendorSKU"`
-	BrandName         string                    `json:"brandName"`
-	Supplier          string                    `json:"supplier,omitempty"`
-	Category          string                    `json:"category"`
-	Collection        string                    `json:"collection"`
-	Season            string                    `json:"season"`
-	Year              string                    `json:"year"`
-	Size              string                    `json:"size"`
-	Color             string                    `json:"color"`
-	AgeGroup          string                    `json:"ageGroup"`
-	Gender            string                    `json:"gender"`
-	ModelNumber       string                    `json:"modelNumber"`
-	StyleNumber       string                    `json:"styleNumber"`
-	Quantity          int                       `json:"quantity"`
-	VatValue          int                       `json:"vatValue"`
-	MoneyItemTotalNet float64                   `json:"moneyItemTotalNet"`
-	MoneyItemTotalVat float64                   `json:"moneyItemTotalVat"`
-	CostPrice         float64                   `json:"costPrice"`
-	CostPriceCurency  string                    `json:"costPriceCurrency"`
-	MoneyDiscount     float64                   `json:"moneyDiscount"`
-	ExternalID        string                    `json:"externalID"`
-	ProductType       int                       `json:"productType,omitempty"`
-	FulfillmentType   int                       `json:"fulfillmentType"`
-	Shipments         []TransactionItemShipment `json:"shipments"`
+	ProductName        string                    `json:"productName"`
+	VariantName        string                    `json:"variantName"`
+	SKU                string                    `json:"sku"`
+	EAN                string                    `json:"ean"`
+	Key                string                    `json:"key"`
+	VendorSKU          string                    `json:"vendorSKU"`
+	BrandName          string                    `json:"brandName"`
+	Supplier           string                    `json:"supplier,omitempty"`
+	Category           string                    `json:"category"`
+	Collection         string                    `json:"collection"`
+	Season             string                    `json:"season"`
+	Year               string                    `json:"year"`
+	Size               string                    `json:"size"`
+	Color              string                    `json:"color"`
+	AgeGroup           string                    `json:"ageGroup"`
+	Gender             string                    `json:"gender"`
+	ModelNumber        string                    `json:"modelNumber"`
+	StyleNumber        string                    `json:"styleNumber"`
+	Quantity           int                       `json:"quantity"`
+	VatValue           int                       `json:"vatValue"`
+	MoneyItemTotalNet  float64                   `json:"moneyItemTotalNet"`
+	MoneyItemTotalVat  float64                   `json:"moneyItemTotalVat"`
+	CostPrice          float64                   `json:"costPrice"`
+	CostPriceCurency   string                    `json:"costPriceCurrency"`
+	MoneyDiscount      float64                   `json:"moneyDiscount"`
+	ExternalID         string                    `json:"externalID"`
+	ProductType        int                       `json:"productType,omitempty"`
+	FulfillmentType    int                       `json:"fulfillmentType"`
+	Shipments          []TransactionItemShipment `json:"shipments"`
+	DeliveryWindowName *string                   `json:"deliveryWindow"`
 }
 
 type TransactionItemShipment struct {
