@@ -105,8 +105,8 @@ type NewTransactionItem struct {
 	Color              string                    `json:"color"`
 	AgeGroup           string                    `json:"ageGroup"`
 	Gender             string                    `json:"gender"`
-	ModelNumber        string                    `json:"modelNumber"`
-	StyleNumber        string                    `json:"styleNumber"`
+	ProductGroupID     string                    `json:"productGroupID"`
+	VariantGroupID     string                    `json:"variantGroupID"`
 	Quantity           int                       `json:"quantity"`
 	VatValue           int                       `json:"vatValue"`
 	MoneyItemTotalNet  float64                   `json:"moneyItemTotalNet"`
