@@ -83,7 +83,7 @@ type NewTransaction struct {
 
 type TransactionStatement struct {
 	Name          string                   `json:"name"`
-	StatementType TransactionStatementType `json:"statementType"`
+	StatementType TransactionStatementType `json:"type"`
 	PriceNet      float64                  `json:"priceNet"`
 	PriceVat      float64                  `json:"priceVat"`
 }
