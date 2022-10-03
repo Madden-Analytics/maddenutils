@@ -6,7 +6,7 @@ type TransactionChannel uint8
 
 const (
 	D2C TransactionChannel = iota + 1
-	D2B
+	B2B
 )
 
 func (t TransactionChannel) String() string {
