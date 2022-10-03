@@ -76,7 +76,7 @@ type NewTransaction struct {
 	TransactionChannel    TransactionChannel     `json:"transactionChannel"`
 	CustomerName          string                 `json:"customerName"`
 	ExternalCustomerID    string                 `json:"externalCustomerID"`
-	AskedDeliveryDate     null.Time              `json:"askedDeliveryDate"`
+	DeliveryDate          null.Time              `json:"deliveryDate"`
 	Statements            []TransactionStatement `json:"statements"`
 	Items                 []NewTransactionItem   `json:"items"`
 }
