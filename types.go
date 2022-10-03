@@ -111,8 +111,8 @@ type NewTransactionItem struct {
 	VatValue           int                       `json:"vatValue"`
 	MoneyItemTotalNet  float64                   `json:"moneyItemTotalNet"`
 	MoneyItemTotalVat  float64                   `json:"moneyItemTotalVat"`
-	CostPrice          float64                   `json:"costPrice"`
-	CostPriceCurency   string                    `json:"costPriceCurrency"`
+	CostPrice          float64                   `json:"costPrice,omitempty"`
+	CostPriceCurrency  string                    `json:"costPriceCurrency,omitempty"`
 	MoneyDiscount      float64                   `json:"moneyDiscount"`
 	ExternalID         string                    `json:"externalID"`
 	ProductType        int                       `json:"productType,omitempty"`
