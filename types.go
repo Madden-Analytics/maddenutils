@@ -174,12 +174,13 @@ type Payment struct {
 
 // MaddenStock holds stock items
 type Stock struct {
-	Sku       string `json:"sku"`
-	EAN       string `json:"ean"`
-	Key       string `json:"key"`
-	BrandName string `json:"brandName"`
-	Quantity  int    `json:"quantity"`
-	Supplier  string `json:"supplier,omitempty"`
+	SKU               string `json:"sku"`
+	EAN               string `json:"ean"`
+	Key               string `json:"key"`
+	BrandName         string `json:"brandName"`
+	AvailableQuantity int    `json:"availableQuantity,omitempty"`
+	PhysicalQuantity  int    `json:"physicalQuantity,omitempty"`
+	Supplier          string `json:"supplier,omitempty"`
 }
 
 // Products - Holds all SKU Data
