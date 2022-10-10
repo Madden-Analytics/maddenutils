@@ -178,8 +178,8 @@ type Stock struct {
 	EAN               string `json:"ean"`
 	Key               string `json:"key"`
 	BrandName         string `json:"brandName"`
-	AvailableQuantity int    `json:"availableQuantity,omitempty"`
-	PhysicalQuantity  int    `json:"physicalQuantity,omitempty"`
+	AvailableQuantity int    `json:"availableQuantity"`
+	PhysicalQuantity  int    `json:"physicalQuantity"`
 	Supplier          string `json:"supplier,omitempty"`
 }
 
