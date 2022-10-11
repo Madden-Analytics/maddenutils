@@ -7,61 +7,7 @@ import (
 	"gorm.io/datatypes"
 )
 
-// TransactionItems holds transcation items from Madden
-type TransactionItem struct {
-	ProductName       string  `json:"productName"`
-	VariantName       string  `json:"variantName"`
-	Sku               string  `json:"sku"`
-	Ean               string  `json:"ean"`
-	Key               string  `json:"key"`
-	VendorSKU         string  `json:"vendorSKU"`
-	BrandName         string  `json:"brandName"`
-	Supplier          string  `json:"supplier,omitempty"`
-	Category          string  `json:"category"`
-	Collection        string  `json:"collection"`
-	Season            string  `json:"season"`
-	Year              string  `json:"year"`
-	Size              string  `json:"size"`
-	Color             string  `json:"color"`
-	AgeGroup          string  `json:"ageGroup"`
-	Gender            string  `json:"gender"`
-	ModelNumber       string  `json:"modelNumber"`
-	StyleNumber       string  `json:"styleNumber"`
-	Quantity          int     `json:"quantity"`
-	VatValue          int     `json:"vatValue"`
-	MoneyItemTotalNet float64 `json:"moneyItemTotalNet"`
-	MoneyItemTotalVat float64 `json:"moneyItemTotalVat"`
-	CostPrice         float64 `json:"costPrice"`
-	CostPriceCurency  string  `json:"costPriceCurrency"`
-	MoneyDiscount     float64 `json:"moneyDiscount"`
-	ExternalID        string  `json:"externalID"`
-	ProductType       int     `json:"productType,omitempty"`
-	FulfillmentType   int     `json:"fulfillmentType"`
-}
-
-// MaddenTransaction holds transaction from Madden
 type Transaction struct {
-	TransactionDate         time.Time         `json:"transactionDate"`
-	TransactionID           int               `json:"id,omitempty"`
-	CompletedAt             null.Time         `json:"completed_at"`
-	CancelledAt             null.Time         `json:"cancelled_at"`
-	ExternalStoreID         string            `json:"externalStoreId"`
-	ExternalTransactionID   string            `json:"externalTransactionId"`
-	MoneyFinalNet           float64           `json:"moneyFinalNet"`
-	MoneyFinalVat           float64           `json:"moneyFinalVat"`
-	MoneyTotalGrossRoundOff float64           `json:"MoneyTotalGrossRoundOff"`
-	CurrencyCode            string            `json:"currencyCode"`
-	Market                  string            `json:"market"`
-	ExternalRowID           string            `json:"externalRowId"`
-	CartDiscount            float64           `json:"cartDiscount"`
-	ShippingName            null.String       `json:"shippingName"`
-	ShippingCost            null.Float        `json:"shippingCost"`
-	Seller                  Seller            `json:"seller"`
-	Payments                []Payment         `json:"payments"`
-	Items                   []TransactionItem `json:"items"`
-}
-
-type NewTransaction struct {
 	TransactionDate       time.Time              `json:"transactionDate"`
 	TransactionID         int                    `json:"id,omitempty"`
 	CompletedAt           null.Time              `json:"completed_at"`
@@ -78,7 +24,7 @@ type NewTransaction struct {
 	ExternalCustomerID    string                 `json:"externalCustomerID"`
 	DeliveryDate          null.Time              `json:"deliveryDate"`
 	Statements            []TransactionStatement `json:"statements"`
-	Items                 []NewTransactionItem   `json:"items"`
+	Items                 []TransactionItem      `json:"items"`
 }
 
 type TransactionStatement struct {
@@ -88,7 +34,7 @@ type TransactionStatement struct {
 	PriceVat      float64                  `json:"priceVat"`
 }
 
-type NewTransactionItem struct {
+type TransactionItem struct {
 	ProductName        string                    `json:"productName"`
 	VariantName        string                    `json:"variantName"`
 	SKU                string                    `json:"sku"`
@@ -177,9 +123,8 @@ type Stock struct {
 	SKU               string `json:"sku"`
 	EAN               string `json:"ean"`
 	Key               string `json:"key"`
-	BrandName         string `json:"brandName"`
-	AvailableQuantity int    `json:"availableQuantity"`
-	PhysicalQuantity  int    `json:"physicalQuantity"`
+	AvailableQuantity *int   `json:"availableQuantity"`
+	PhysicalQuantity  *int   `json:"physicalQuantity"`
 	Supplier          string `json:"supplier,omitempty"`
 }
 
@@ -305,70 +250,6 @@ type Bearer struct {
 type APIKey struct {
 	AccountID string `json:"accountID"`
 	APIKey    string `json:"apiKey"`
-}
-
-// Transaction main holder of transaction items
-type WholesaleTransaction struct {
-	TransactionID           int                        `json:"id,omitempty"`
-	TransactionDate         time.Time                  `json:"transactionDate"`
-	CompletedAt             null.Time                  `json:"completed_at"`
-	CancelledAt             null.Time                  `json:"cancelled_at"`
-	AskedDeliveryDate       null.Time                  `json:"askedDeliveryDate"`
-	CustomerName            string                     `json:"customerName"`
-	CustomerExternalID      string                     `json:"externalCustomerID"`
-	ExternalStoreID         string                     `json:"externalStoreId"`
-	ExternalTransactionID   string                     `json:"externalTransactionId"`
-	MoneyFinalNet           float64                    `json:"moneyFinalNet"`
-	MoneyFinalVat           float64                    `json:"moneyFinalVat"`
-	MoneyTotalGrossRoundOff float64                    `json:"MoneyTotalGrossRoundOff"`
-	CurrencyCode            string                     `json:"currencyCode"`
-	ExternalRowID           string                     `json:"externalRowId"`
-	Items                   []WholesaleTransactionItem `json:"items"`
-	Market                  string                     `json:"market"`
-	CartDiscount            float64                    `json:"cartDiscount"`
-	ShippingName            null.String                `json:"shippingName"`
-	ShippingCost            null.Float                 `json:"shippingCost"`
-}
-
-// TransactionItem or event log
-type WholesaleTransactionItem struct {
-	ProductName       string                   `json:"productName"`
-	SKU               string                   `json:"sku"`
-	VendorSKU         string                   `json:"vendorSKU"`
-	EAN               string                   `json:"ean"`
-	Key               string                   `json:"key"`
-	BrandName         string                   `json:"brandName"`
-	Category          string                   `json:"category"`
-	Collection        string                   `json:"collection"`
-	Season            string                   `json:"season"`
-	Year              string                   `json:"year"`
-	Size              string                   `json:"size"`
-	Color             string                   `json:"color"`
-	AgeGroup          string                   `json:"ageGroup"`
-	Gender            string                   `json:"gender"`
-	ModelNumber       string                   `json:"ModelNumber"`
-	Quantity          int                      `json:"quantity"`
-	VatValue          int                      `json:"vatValue"`
-	MoneyItemTotalNet float64                  `json:"moneyItemTotalNet"`
-	MoneyItemTotalVat float64                  `json:"moneyItemTotalVat"`
-	CostPrice         float64                  `json:"costPrice"`
-	CostPriceCurrency string                   `json:"costPriceCurrency"`
-	MoneyDiscount     float64                  `json:"moneyDiscount"`
-	Supplier          string                   `json:"supplier"`
-	ExternalID        string                   `json:"externalID"`
-	StyleNumber       string                   `json:"styleNumber"`
-	VariantName       string                   `json:"variantName"`
-	ProductType       int                      `json:"productType"`
-	FulfillmentType   int                      `json:"fulfillmentType"`
-	ShipmentEvent     []WholesaleShipmentEvent `json:"shipments"`
-}
-
-// ShippingEvent holds each TIW shipment
-type WholesaleShipmentEvent struct {
-	Quantity            int       `json:"quantity"`
-	Date                time.Time `json:"shipmentDate"`
-	ShipmentID          string    `json:"shipmentID"`
-	ExternalWarehouseID string    `json:"externalWarehouseID"`
 }
 
 type StoreTrafficEvent struct {
