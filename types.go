@@ -18,8 +18,8 @@ type Transaction struct {
 	CurrencyCode          string                 `json:"currencyCode"`
 	ExternalRowID         string                 `json:"externalRowId"`
 	Market                string                 `json:"market"`
-	TransactionType       TransactionType        `json:"transactionType"`
-	TransactionChannel    TransactionChannel     `json:"transactionChannel"`
+	TransactionType       TransType              `json:"transactionType"`
+	TransactionChannel    TransChannel           `json:"transactionChannel"`
 	CustomerName          string                 `json:"customerName"`
 	ExternalCustomerID    string                 `json:"externalCustomerID"`
 	DeliveryDate          null.Time              `json:"deliveryDate"`
@@ -28,10 +28,10 @@ type Transaction struct {
 }
 
 type TransactionStatement struct {
-	Name          string                   `json:"name"`
-	StatementType TransactionStatementType `json:"type"`
-	PriceNet      float64                  `json:"priceNet"`
-	PriceVat      float64                  `json:"priceVat"`
+	Name          string             `json:"name"`
+	StatementType TransStatementType `json:"type"`
+	PriceNet      float64            `json:"priceNet"`
+	PriceVat      float64            `json:"priceVat"`
 }
 
 type TransactionItem struct {
