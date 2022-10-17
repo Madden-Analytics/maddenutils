@@ -10,16 +10,16 @@ import (
 type Transaction struct {
 	TransactionDate       time.Time              `json:"transactionDate"`
 	TransactionID         int                    `json:"id,omitempty"`
-	CompletedAt           null.Time              `json:"completedDate"`
-	CancelledAt           null.Time              `json:"cancelledDate"`
+	CompletedAt           null.Time              `json:"completed_at"`
+	CancelledAt           null.Time              `json:"cancelled_at"`
 	ExternalStoreID       string                 `json:"externalStoreID"`
 	ExternalTransactionID string                 `json:"externalTransactionID"`
 	ExternalParentID      *string                `json:"externalParentID"`
 	CurrencyCode          string                 `json:"currencyCode"`
 	ExternalRowID         string                 `json:"externalRowId"`
 	Market                string                 `json:"market"`
-	TransactionType       TransType              `json:"type"`
-	TransactionChannel    TransChannel           `json:"channel"`
+	TransactionType       TransType              `json:"transactionType"`
+	TransactionChannel    TransChannel           `json:"transactionChannel"`
 	CustomerName          string                 `json:"customerName"`
 	ExternalCustomerID    string                 `json:"externalCustomerID"`
 	DeliveryDate          null.Time              `json:"deliveryDate"`
