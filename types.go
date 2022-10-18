@@ -8,7 +8,7 @@ import (
 )
 
 type Transaction struct {
-	TransactionDate       time.Time              `json:"transactionDate"`
+	TransactionDate       time.Time              `json:"createdDate"`
 	TransactionID         int                    `json:"id,omitempty"`
 	CompletedAt           null.Time              `json:"completedDate"`
 	CancelledAt           null.Time              `json:"cancelledDate"`
