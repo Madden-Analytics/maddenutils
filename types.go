@@ -18,8 +18,8 @@ type Transaction struct {
 	CurrencyCode          string                 `json:"currencyCode"`
 	ExternalRowID         string                 `json:"externalRowId"`
 	Market                string                 `json:"market"`
-	TransactionType       TransType              `json:"transactionType"`
-	TransactionChannel    TransChannel           `json:"transactionChannel"`
+	TransactionType       TransType              `json:"type"`
+	TransactionChannel    TransChannel           `json:"channel"`
 	CustomerName          string                 `json:"customerName"`
 	ExternalCustomerID    string                 `json:"externalCustomerID"`
 	DeliveryDate          null.Time              `json:"deliveryDate"`
