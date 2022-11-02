@@ -147,7 +147,7 @@ type Product struct {
 	Gender            string         `json:"gender"`
 	ProductGroupID    string         `json:"productGroupID"`
 	VariantGroupID    string         `json:"variantGroupID"`
-	ExternalID        string         `json:"externalID"`
+	ExternalID        string         `json:"variantExternalID"`
 	Key               string         `json:"key"`
 	SkuSynonym        []string       `json:"skuSynonyms"`
 	ProductType       int            `json:"productType"`
