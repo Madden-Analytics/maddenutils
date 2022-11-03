@@ -158,7 +158,7 @@ type Product struct {
 	CostPriceCurrency string         `json:"costPriceCurrency"`
 	Price             float64        `json:"price"`
 	PriceCurrency     string         `json:"priceCurrency"`
-	Active            bool           `json:"active"`
+	Status            SKUStatus      `json:"status"`
 	LeadTime          int            `json:"leadTime"`
 	MOQ               int            `json:"moq"`
 	Supplier          string         `json:"supplier"`
@@ -205,7 +205,7 @@ type SKU struct {
 	Year              string         `json:"year"`
 	AgeGroup          string         `json:"ageGroup"`
 	Gender            string         `json:"gender"`
-	Active            bool           `json:"active"`
+	Status            SKUStatus      `json:"status"`
 	VariantGroupID    string         `json:"variantGroupID"`
 	ExternalID        string         `json:"externalID"`
 	Source            int            `json:"source"`

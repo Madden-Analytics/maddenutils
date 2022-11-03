@@ -37,3 +37,15 @@ const (
 func (t TransStatementType) String() string {
 	return strconv.Itoa(int(t))
 }
+
+type SKUStatus uint8
+
+const (
+	SKUStatus_Inactive SKUStatus = 1
+	SKUStatus_Active   SKUStatus = 2
+	SKUStatus_Outgoing SKUStatus = 3
+)
+
+func (t SKUStatus) String() string {
+	return strconv.Itoa(int(t))
+}
