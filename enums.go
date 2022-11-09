@@ -44,6 +44,7 @@ const (
 	SKUStatus_Inactive SKUStatus = 1
 	SKUStatus_Active   SKUStatus = 2
 	SKUStatus_Outgoing SKUStatus = 3
+	SKUStatus_Draft    SKUStatus = 4
 )
 
 func (t SKUStatus) String() string {
