@@ -130,38 +130,38 @@ type Stock struct {
 
 // Products - Holds all SKU Data
 type Product struct {
-	ID                int            `json:"id"`
-	ProductName       string         `json:"productName"`
-	VariantName       string         `json:"variantName"`
-	SKU               string         `json:"sku"`
-	VendorSKU         string         `json:"vendorSKU"`
-	EAN               string         `json:"ean"`
-	BrandName         string         `json:"brandName" example:"Acme"`
-	CategoryName      string         `json:"categoryName"`
-	Collection        string         `json:"collection"`
-	Season            string         `json:"season"`
-	Year              string         `json:"year"`
-	Size              string         `json:"size"`
-	Color             string         `json:"color"`
-	AgeGroup          string         `json:"ageGroup"`
-	Gender            string         `json:"gender"`
-	ProductGroupID    string         `json:"productGroupID"`
-	VariantGroupID    string         `json:"variantGroupID"`
-	ExternalID        string         `json:"variantExternalID"`
-	Key               string         `json:"key"`
-	SkuSynonym        []string       `json:"skuSynonyms"`
-	ProductType       int            `json:"productType"`
-	ProductID         uint           `json:"productID"`
-	VariantID         uint           `json:"variantID"`
-	Info              datatypes.JSON `json:"info"`
+	ID                int            `json:"id,omitempty"`
+	ProductName       string         `json:"productName,omitempty"`
+	VariantName       string         `json:"variantName,omitempty"`
+	SKU               string         `json:"sku,omitempty"`
+	VendorSKU         string         `json:"vendorSKU,omitempty"`
+	EAN               string         `json:"ean,omitempty"`
+	BrandName         string         `json:"brandName,omitempty"`
+	CategoryName      string         `json:"categoryName,omitempty"`
+	Collection        string         `json:"collection,omitempty"`
+	Season            string         `json:"season,omitempty"`
+	Year              string         `json:"year,omitempty"`
+	Size              string         `json:"size,omitempty"`
+	Color             string         `json:"color,omitempty"`
+	AgeGroup          string         `json:"ageGroup,omitempty"`
+	Gender            string         `json:"gender,omitempty"`
+	ProductGroupID    string         `json:"productGroupID,omitempty"`
+	VariantGroupID    string         `json:"variantGroupID,omitempty"`
+	ExternalID        string         `json:"variantExternalID,omitempty"`
+	Key               string         `json:"key,omitempty"`
+	SkuSynonym        []string       `json:"skuSynonyms,omitempty"`
+	ProductType       int            `json:"productType,omitempty"`
+	ProductID         uint           `json:"productID,omitempty"`
+	VariantID         uint           `json:"variantID,omitempty"`
+	Info              datatypes.JSON `json:"info,omitempty"`
 	CostPrice         float64        `json:"costPrice,omitempty"`
 	CostPriceCurrency string         `json:"costPriceCurrency,omitempty"`
 	Price             float64        `json:"price,omitempty"`
 	PriceCurrency     string         `json:"priceCurrency,omitempty"`
-	Status            SKUStatus      `json:"status"`
-	LeadTime          int            `json:"leadTime"`
-	MOQ               int            `json:"moq"`
-	Supplier          string         `json:"supplier"`
+	Status            SKUStatus      `json:"status,omitempty"`
+	LeadTime          int            `json:"leadTime,omitempty"`
+	MOQ               int            `json:"moq,omitempty"`
+	Supplier          string         `json:"supplier,omitempty"`
 }
 
 type Store struct {
