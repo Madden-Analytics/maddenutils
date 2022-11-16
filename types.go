@@ -154,10 +154,10 @@ type Product struct {
 	ProductID         uint           `json:"productID"`
 	VariantID         uint           `json:"variantID"`
 	Info              datatypes.JSON `json:"info"`
-	CostPrice         float64        `json:"costPrice"`
-	CostPriceCurrency string         `json:"costPriceCurrency"`
-	Price             float64        `json:"price"`
-	PriceCurrency     string         `json:"priceCurrency"`
+	CostPrice         float64        `json:"costPrice,omitempty"`
+	CostPriceCurrency string         `json:"costPriceCurrency,omitempty"`
+	Price             float64        `json:"price,omitempty"`
+	PriceCurrency     string         `json:"priceCurrency,omitempty"`
 	Status            SKUStatus      `json:"status"`
 	LeadTime          int            `json:"leadTime"`
 	MOQ               int            `json:"moq"`
