@@ -23,6 +23,7 @@ type Transaction struct {
 	CustomerName          string                 `json:"customerName"`
 	ExternalCustomerID    string                 `json:"externalCustomerID"`
 	DeliveryDate          null.Time              `json:"deliveryDate"`
+	ExternalInfo          *datatypes.JSON        `json:"externalInfo"`
 	Statements            []TransactionStatement `json:"statements"`
 	Items                 []TransactionItem      `json:"items"`
 }
@@ -65,6 +66,7 @@ type TransactionItem struct {
 	FulfillmentType    int                       `json:"fulfillmentType"`
 	Shipments          []TransactionItemShipment `json:"shipments"`
 	DeliveryWindowName *string                   `json:"deliveryWindow"`
+	CustomFields       *datatypes.JSON           `json:"customFields"`
 }
 
 type TransactionItemShipment struct {
