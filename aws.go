@@ -45,7 +45,6 @@ func PutConfig(configName string, region string, value string) error {
 		Value:     aws.String(value),
 		Overwrite: aws.Bool(true),
 		Type:      aws.String("String"),
-		Tier:      aws.String("Advanced"),
 	})
 
 	return err
