@@ -5,10 +5,11 @@ import (
 	"encoding/base64"
 	"encoding/hex"
 	"encoding/json"
-	"log"
 	"net/http"
 	"strconv"
 	"strings"
+
+	log "github.com/sirupsen/logrus"
 
 	zerowidth "github.com/trubitsyn/go-zero-width"
 )
@@ -25,16 +26,18 @@ func GetAuth(baseURL string, accountID string, key string) string {
 	maddenKeyJSON, _ := json.Marshal(maddenKey)
 
 	// Get Madden Bearer Token
-	statusCode, maddenAuthResponse := Request(
+	statusCode, response := Request(
 		"POST",
 		baseURL+"/auth",
 		"",
 		maddenKeyJSON,
 	)
 	if statusCode != http.StatusOK {
-		log.Fatal("Error getting Auth")
+		log.WithFields(log.Fields{
+			"errorMessage": string(response),
+		}).Fatal("error getting auth")
 	} else {
-		json.Unmarshal(maddenAuthResponse, &maddenAuth)
+		json.Unmarshal(response, &maddenAuth)
 	}
 
 	return maddenAuth.AccessToken
