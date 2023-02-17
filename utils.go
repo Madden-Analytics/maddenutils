@@ -1,6 +1,7 @@
 package maddenutils
 
 import (
+	"bytes"
 	"crypto/md5"
 	"encoding/base64"
 	"encoding/hex"
@@ -10,6 +11,7 @@ import (
 	"strings"
 
 	log "github.com/sirupsen/logrus"
+	"github.com/spf13/viper"
 
 	zerowidth "github.com/trubitsyn/go-zero-width"
 )
@@ -112,4 +114,36 @@ func CleanString(s string) string {
 	s = strings.TrimSpace(s)
 	s = zerowidth.RemoveZeroWidthCharacters(s)
 	return s
+}
+
+// Read the config file from the current directory and marshal
+// into the conf config struct.
+func getConf[T any](configName string) *T {
+
+	viper.AddConfigPath(".")
+	viper.SetConfigName("config")
+	err := viper.ReadInConfig()
+
+	//Set Config File setting
+	viper.SetConfigType("json")
+
+	// Get config from AWS
+	configFile := GetConfig(configName, "eu-north-1")
+
+	// Searches for config file in given paths and read it
+	if err := viper.ReadConfig(bytes.NewBuffer(configFile)); err != nil {
+		log.WithFields(log.Fields{
+			"type": "config",
+		}).Fatal("error reading config file", err)
+	}
+
+	conf := new(T)
+	err = viper.Unmarshal(conf)
+	if err != nil {
+		log.WithFields(log.Fields{
+			"type": "config",
+		}).Fatal("error unmarshalling config file", err)
+	}
+
+	return conf
 }
