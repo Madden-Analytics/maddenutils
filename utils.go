@@ -118,7 +118,7 @@ func CleanString(s string) string {
 
 // Read the config file from the current directory and marshal
 // into the conf config struct.
-func getConf[T any](configName string) *T {
+func GetConf[T any](configName string) *T {
 
 	viper.AddConfigPath(".")
 	viper.SetConfigName("config")
