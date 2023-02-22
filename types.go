@@ -162,7 +162,7 @@ type Product struct {
 	PriceCurrency          string         `json:"priceCurrency,omitempty"`
 	WholesalePrice         float64        `json:"wholesalePrice,omitempty"`
 	WholesalePriceCurrency string         `json:"wholesalePriceCurrency,omitempty"`
-	VatValue               int            `json:"vatValue"`
+	VatValue               int            `json:"vatValue,omitempty"`
 	Status                 SKUStatus      `json:"status,omitempty"`
 	LeadTime               int            `json:"leadTime,omitempty"`
 	MOQ                    int            `json:"moq,omitempty"`
