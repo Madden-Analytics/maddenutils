@@ -42,5 +42,13 @@ func Request(requestType string, endpoint string, auth string, json []byte) (int
 		}).Error("ERROR Reading Response")
 	}
 
+	if resp.StatusCode == http.StatusUnauthorized {
+		log.WithFields(log.Fields{
+			"requesttype":  requestType,
+			"endpoint":     endpoint,
+			"errorMessage": err,
+		}).Fatal("Unauthorized")
+	}
+
 	return resp.StatusCode, response
 }
