@@ -85,30 +85,30 @@ type DeliveryEvent struct {
 
 // PurchaseOrderItem holds each purchase order row
 type PurchaseOrderItem struct {
-	ProductName        string          `json:"productName"`
-	Sku                string          `json:"sku"`
-	EAN                string          `json:"ean"`
-	Key                string          `json:"key"`
-	BrandName          string          `json:"brandName"`
-	Quantity           int             `json:"quantity"`
-	TotalPriceNet      float64         `json:"totalPriceNet"`
-	TotalPriceVat      float64         `json:"totalPriceVat"`
-	TotalPriceCurrency string          `json:"totalPriceCurrency"`
-	Supplier           null.String     `json:"supplier"`
-	ExternalRowID      string          `json:"externalRowID"`
-	Deliveries         []DeliveryEvent `json:"deliveries"`
+	DeliveryDate        null.Time       `json:"deliveryDate"`
+	WarehouseExternalID string          `json:"externalWarehouseId"`
+	ProductName         string          `json:"productName"`
+	Sku                 string          `json:"sku"`
+	EAN                 string          `json:"ean"`
+	Key                 string          `json:"key"`
+	BrandName           string          `json:"brandName"`
+	Quantity            int             `json:"quantity"`
+	TotalPriceNet       float64         `json:"totalPriceNet"`
+	TotalPriceVat       float64         `json:"totalPriceVat"`
+	TotalPriceCurrency  string          `json:"totalPriceCurrency"`
+	Supplier            null.String     `json:"supplier"`
+	ExternalRowID       string          `json:"externalRowID"`
+	Deliveries          []DeliveryEvent `json:"deliveries"`
 }
 
 // PurchaseOrder main holder of purchase order items
 type PurchaseOrder struct {
-	ID                  int                 `json:"id,omitempty"`
-	OrderDate           time.Time           `json:"orderDate" gorm:"not null"`
-	DeliveryDate        null.Time           `json:"deliveryDate"`
-	DeliveryStatus      int                 `json:"deliveryStatus"` // 0 - Not Delivered, 10 - Partially Delivered, 20 - Fully Delivered
-	WarehouseExternalID string              `json:"externalWarehouseId"`
-	ExternalPurchaseNo  string              `json:"externalPurchaseNo"`
-	ExternalComment     string              `json:"externalComment"`
-	Items               []PurchaseOrderItem `json:"items"`
+	ID                 int                 `json:"id,omitempty"`
+	OrderDate          time.Time           `json:"orderDate" gorm:"not null"`
+	DeliveryStatus     int                 `json:"deliveryStatus"` // 0 - Not Delivered, 10 - Partially Delivered, 20 - Fully Delivered
+	ExternalPurchaseNo string              `json:"externalPurchaseNo"`
+	ExternalComment    string              `json:"externalComment"`
+	Items              []PurchaseOrderItem `json:"items"`
 }
 
 type Seller struct {
