@@ -50,3 +50,18 @@ const (
 func (t SKUStatus) String() string {
 	return strconv.Itoa(int(t))
 }
+
+type DeliveryStatus uint8
+
+const (
+	DeliveryStatus_NotDelivered       DeliveryStatus = 0
+	DeliveryStatus_PartiallyDelivered DeliveryStatus = 1
+	DeliveryStatus_FullyDelivered     DeliveryStatus = 2
+	DeliveryStatus_Cancelled          DeliveryStatus = 3
+	DeliveryStatus_Draft              DeliveryStatus = 4
+	DeliveryStatus_Open               DeliveryStatus = 5
+)
+
+func (t DeliveryStatus) String() string {
+	return strconv.Itoa(int(t))
+}
