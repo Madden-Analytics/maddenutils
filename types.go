@@ -266,3 +266,18 @@ type StoreTrafficEvent struct {
 	IncomingTraffic       int       `json:"incomingTraffic"`
 	OutgoingTraffic       int       `json:"outgoingTraffic"`
 }
+
+type DistributionOrder struct {
+	ID                      uint       `json:"id,omitempty"`
+	ExternalDOID            string     `json:"externalDistributionOrderId"`
+	Key                     string     `json:"key"`
+	Status                  string     `json:"status"`
+	OrderDate               time.Time  `json:"orderDate"`
+	ShippedAt               *time.Time `json:"shippedAt"`
+	DeliveryDate            *time.Time `json:"deliveryDate"`
+	FromWarehouseExternalID string     `json:"fromWarehouseExternalId"`
+	ToWarehouseExternalID   string     `json:"toWarehouseExternalId"`
+	Quantity                uint       `json:"quantity"`
+	DeliveredQuantity       uint       `json:"deliveredQuantity"`
+	CancelledAt             *time.Time `json:"cancelledAt"`
+}
