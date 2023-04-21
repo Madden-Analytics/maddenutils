@@ -7,13 +7,13 @@ import (
 )
 
 // GetConfig - Returns config values (JSON) from AWS Parameter Store
-func GetConfig(configName string, region string) []byte {
+func GetConfig(configName string, region string) ([]byte, error) {
 	sess, err := session.NewSessionWithOptions(session.Options{
 		Config:            aws.Config{Region: aws.String(region)},
 		SharedConfigState: session.SharedConfigEnable,
 	})
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	ssmsvc := ssm.New(sess, aws.NewConfig().WithRegion(region))
@@ -22,11 +22,11 @@ func GetConfig(configName string, region string) []byte {
 		WithDecryption: aws.Bool(false),
 	})
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	value := []byte(*param.Parameter.Value)
-	return value
+	return value, err
 }
 
 // PutConfig - Updates config value (JSON) to AWS Parameter Store

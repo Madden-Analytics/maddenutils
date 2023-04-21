@@ -118,7 +118,7 @@ func CleanString(s string) string {
 
 // Read the config file from the current directory and marshal
 // into the conf config struct.
-func GetConf[T any](configName string) *T {
+func GetConf[T any](configName string) (*T, error) {
 
 	viper.AddConfigPath(".")
 	viper.SetConfigName("config")
@@ -128,22 +128,18 @@ func GetConf[T any](configName string) *T {
 	viper.SetConfigType("json")
 
 	// Get config from AWS
-	configFile := GetConfig(configName, "eu-north-1")
+	configFile, err := GetConfig(configName, "eu-north-1")
+	if err != nil {
+		return nil, err
+	}
 
 	// Searches for config file in given paths and read it
 	if err := viper.ReadConfig(bytes.NewBuffer(configFile)); err != nil {
-		log.WithFields(log.Fields{
-			"type": "config",
-		}).Fatal("error reading config file", err)
+		return nil, err
 	}
 
 	conf := new(T)
 	err = viper.Unmarshal(conf)
-	if err != nil {
-		log.WithFields(log.Fields{
-			"type": "config",
-		}).Fatal("error unmarshalling config file", err)
-	}
 
-	return conf
+	return conf, err
 }
