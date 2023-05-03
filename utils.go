@@ -6,29 +6,26 @@ import (
 	"encoding/base64"
 	"encoding/hex"
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"strconv"
 	"strings"
 
+	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 
 	zerowidth "github.com/trubitsyn/go-zero-width"
 )
 
 // GetAuth generates bearer token from Madden
-func GetAuth(baseURL string, accountID string, key string) (*string, error) {
+func GetAuth(baseURL string, accountID string, key string) string {
 
-	var err error
+	var maddenAuth Bearer
 	maddenKey := APIKey{
 		AccountID: accountID,
 		APIKey:    key,
 	}
 
-	maddenKeyJSON, err := json.Marshal(maddenKey)
-	if err != nil {
-		return nil, fmt.Errorf("could not marshal key")
-	}
+	maddenKeyJSON, _ := json.Marshal(maddenKey)
 
 	// Get Madden Bearer Token
 	statusCode, response := Request(
@@ -37,15 +34,15 @@ func GetAuth(baseURL string, accountID string, key string) (*string, error) {
 		"",
 		maddenKeyJSON,
 	)
-
-	var maddenAuth Bearer
 	if statusCode != http.StatusOK {
-		return nil, fmt.Errorf(fmt.Sprintf("Could not get auth token: %v", string(response)))
+		log.WithFields(log.Fields{
+			"errorMessage": string(response),
+		}).Fatal("error getting auth")
 	} else {
 		json.Unmarshal(response, &maddenAuth)
 	}
 
-	return &maddenAuth.AccessToken, err
+	return maddenAuth.AccessToken
 }
 
 // GetBasicToken - Hashes a basic auth token
@@ -143,9 +140,6 @@ func GetConf[T any](configName string) (*T, error) {
 
 	conf := new(T)
 	err = viper.Unmarshal(conf)
-	if err != nil {
-		return nil, err
-	}
 
 	return conf, err
 }
