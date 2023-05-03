@@ -143,6 +143,9 @@ func GetConf[T any](configName string) (*T, error) {
 
 	conf := new(T)
 	err = viper.Unmarshal(conf)
+	if err != nil {
+		return nil, err
+	}
 
 	return conf, err
 }
