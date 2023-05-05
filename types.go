@@ -23,7 +23,7 @@ type Transaction struct {
 	CustomerName          string                 `json:"customerName"`
 	ExternalCustomerID    string                 `json:"externalCustomerID"`
 	DeliveryDate          null.Time              `json:"deliveryDate"`
-	ExternalInfo          datatypes.JSON         `json:"externalInfo"`
+	ExternalInfo          *datatypes.JSON        `json:"externalInfo"`
 	Statements            []TransactionStatement `json:"statements"`
 	Items                 []TransactionItem      `json:"items"`
 }
