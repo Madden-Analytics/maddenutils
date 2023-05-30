@@ -270,6 +270,7 @@ type StoreTrafficEvent struct {
 type DistributionOrder struct {
 	ID                      uint       `json:"id,omitempty"`
 	ExternalDOID            string     `json:"externalDistributionOrderId"`
+	ExternalRowID           string     `json:"externalRowId"`
 	Key                     string     `json:"key"`
 	Status                  string     `json:"status,omitempty"`
 	OrderDate               time.Time  `json:"orderDate"`
