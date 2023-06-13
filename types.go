@@ -106,6 +106,8 @@ type PurchaseOrder struct {
 	ID                 int                 `json:"id,omitempty"`
 	OrderDate          time.Time           `json:"orderDate" gorm:"not null"`
 	DeliveryStatus     DeliveryStatus      `json:"deliveryStatus"` // 0 - Not Delivered, 10 - Partially Delivered, 20 - Fully Delivered
+	CompletedDate      *time.Time          `json:"completedDate,omitempty"`
+	CancelledDate      *time.Time          `json:"cancelledDate,omitempty"`
 	ExternalPurchaseNo string              `json:"externalPurchaseNo"`
 	ExternalComment    string              `json:"externalComment"`
 	Items              []PurchaseOrderItem `json:"items"`
@@ -158,6 +160,8 @@ type Product struct {
 	Info                   datatypes.JSON `json:"info,omitempty"`
 	CostPrice              float64        `json:"costPrice,omitempty"`
 	CostPriceCurrency      string         `json:"costPriceCurrency,omitempty"`
+	SupplierPrice          float64        `json:"supplierPrice"`
+	SupplierPriceCurrency  string         `json:"supplierPriceCurrency"`
 	Price                  float64        `json:"price,omitempty"`
 	PriceCurrency          string         `json:"priceCurrency,omitempty"`
 	WholesalePrice         float64        `json:"wholesalePrice,omitempty"`
@@ -280,5 +284,6 @@ type DistributionOrder struct {
 	ToWarehouseExternalID   string     `json:"toWarehouseExternalId"`
 	Quantity                uint       `json:"quantity"`
 	DeliveredQuantity       uint       `json:"deliveredQuantity"`
-	CancelledAt             *time.Time `json:"cancelledAt,omitempty"`
+	CompletedDate           *time.Time `json:"completedDate,omitempty"`
+	CancelledDate           *time.Time `json:"cancelledDate,omitempty"`
 }
