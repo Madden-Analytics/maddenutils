@@ -7,14 +7,23 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"net/http"
+	"sort"
 	"strconv"
 	"strings"
+	"time"
 
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 
 	zerowidth "github.com/trubitsyn/go-zero-width"
 )
+
+// timeSlice - Functions for sorting times
+type timeSlice []time.Time
+
+func (s timeSlice) Less(i, j int) bool { return s[i].Before(s[j]) }
+func (s timeSlice) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
+func (s timeSlice) Len() int           { return len(s) }
 
 // GetAuth generates bearer token from Madden
 func GetAuth(baseURL string, accountID string, key string) string {
@@ -142,4 +151,13 @@ func GetConf[T any](configName string) (*T, error) {
 	err = viper.Unmarshal(conf)
 
 	return conf, err
+}
+
+func GetLatestDate(dateSlice timeSlice) time.Time {
+	latest := time.Time{}
+	if len(dateSlice) > 0 {
+		sort.Sort(sort.Reverse(dateSlice))
+		latest = dateSlice[0]
+	}
+	return latest
 }
