@@ -65,3 +65,16 @@ const (
 func (t DeliveryStatus) String() string {
 	return strconv.Itoa(int(t))
 }
+
+type ProductType uint8
+
+const (
+	ProductType_Unknown    ProductType = 0
+	ProductType_Standard   ProductType = 1
+	ProductType_Commission ProductType = 2
+	ProductType_Local      ProductType = 3
+)
+
+func (t ProductType) String() string {
+	return strconv.Itoa(int(t))
+}
