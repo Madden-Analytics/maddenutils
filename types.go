@@ -33,6 +33,7 @@ type TransactionStatement struct {
 	StatementType TransStatementType `json:"type"`
 	PriceNet      float64            `json:"priceNet"`
 	PriceVat      float64            `json:"priceVat"`
+	CustomFields  *datatypes.JSON    `json:"customFields"`
 }
 
 type TransactionItem struct {
