@@ -145,6 +145,7 @@ type Product struct {
 	EAN                    string         `json:"ean,omitempty"`
 	BrandName              string         `json:"brandName,omitempty"`
 	CategoryName           string         `json:"categoryName,omitempty"`
+	Subcategory            string         `json:"subCategory,omitempty"`
 	Collection             string         `json:"collection,omitempty"`
 	Season                 string         `json:"season,omitempty"`
 	Year                   string         `json:"year,omitempty"`
