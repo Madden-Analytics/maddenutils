@@ -110,6 +110,7 @@ type PurchaseOrder struct {
 	CompletedDate      *time.Time          `json:"completedDate,omitempty"`
 	CancelledDate      *time.Time          `json:"cancelledDate,omitempty"`
 	ExternalPurchaseNo string              `json:"externalPurchaseNo"`
+	Label              *string             `json:"label"`
 	ExternalComment    string              `json:"externalComment"`
 	Items              []PurchaseOrderItem `json:"items"`
 }
