@@ -26,6 +26,7 @@ type Transaction struct {
 	ExternalInfo          *datatypes.JSON        `json:"externalInfo"`
 	Statements            []TransactionStatement `json:"statements"`
 	Items                 []TransactionItem      `json:"items"`
+	OrderType             *string                `json:"orderType"`
 }
 
 type TransactionStatement struct {
@@ -87,20 +88,23 @@ type DeliveryEvent struct {
 
 // PurchaseOrderItem holds each purchase order row
 type PurchaseOrderItem struct {
-	DeliveryDate        null.Time       `json:"deliveryDate"`
-	WarehouseExternalID string          `json:"externalWarehouseId"`
-	ProductName         string          `json:"productName"`
-	Sku                 string          `json:"sku"`
-	EAN                 string          `json:"ean"`
-	Key                 string          `json:"key"`
-	BrandName           string          `json:"brandName"`
-	Quantity            int             `json:"quantity"`
-	TotalPriceNet       float64         `json:"totalPriceNet"`
-	TotalPriceVat       float64         `json:"totalPriceVat"`
-	TotalPriceCurrency  string          `json:"totalPriceCurrency"`
-	Supplier            null.String     `json:"supplier"`
-	ExternalRowID       string          `json:"externalRowID"`
-	Deliveries          []DeliveryEvent `json:"deliveries"`
+	DeliveryDate         *time.Time      `json:"deliveryDate"`
+	WarehouseExternalID  string          `json:"externalWarehouseId"`
+	ProductName          string          `json:"productName"`
+	Sku                  string          `json:"sku"`
+	EAN                  string          `json:"ean"`
+	Key                  string          `json:"key"`
+	BrandName            string          `json:"brandName"`
+	Quantity             int             `json:"quantity"`
+	TotalPriceNet        float64         `json:"totalPriceNet"`
+	TotalPriceVat        float64         `json:"totalPriceVat"`
+	TotalPriceCurrency   string          `json:"totalPriceCurrency"`
+	Supplier             null.String     `json:"supplier"`
+	ExternalRowID        string          `json:"externalRowID"`
+	Deliveries           []DeliveryEvent `json:"deliveries"`
+	RevisedDeliveryDate  *time.Time      `json:"revisedDeliveryDate"`
+	DepartureDate        *time.Time      `json:"departureDate"`
+	RevisedDepartureDate *time.Time      `json:"revisedDepartureDate"`
 }
 
 // PurchaseOrder main holder of purchase order items
@@ -114,6 +118,10 @@ type PurchaseOrder struct {
 	Label              *string             `json:"label"`
 	ExternalComment    string              `json:"externalComment"`
 	Items              []PurchaseOrderItem `json:"items"`
+	OrderType          *string             `json:"orderType"`
+	DeliveryWindow     *string             `json:"deliveryWindow"`
+	Factory            *string             `json:"factory"`
+	TransportMethod    *string             `json:"transportMethod"`
 }
 
 type Seller struct {
@@ -293,4 +301,6 @@ type DistributionOrder struct {
 	DeliveredQuantity       uint       `json:"deliveredQuantity"`
 	CompletedDate           *time.Time `json:"completedDate,omitempty"`
 	CancelledDate           *time.Time `json:"cancelledDate,omitempty"`
+	OrderType               *string    `json:"orderType"`
+	DeliveryWindow          *string    `json:"deliveryWindow"`
 }
