@@ -69,7 +69,7 @@ type TransactionItem struct {
 	Shipments           []TransactionItemShipment `json:"shipments"`
 	DeliveryWindowName  *string                   `json:"deliveryWindow"`
 	CustomFields        *datatypes.JSON           `json:"customFields"`
-	ExternalWarehouseID string                    `json:"externalWarehouseID"`
+	ExternalWarehouseID *string                   `json:"externalWarehouseID"`
 }
 
 type TransactionItemShipment struct {
