@@ -45,6 +45,7 @@ func GetAuth(baseURL string, accountID string, key string) string {
 	)
 	if statusCode != http.StatusOK {
 		log.WithFields(log.Fields{
+			"accountID":    accountID,
 			"errorMessage": string(response),
 		}).Fatal("error getting auth")
 	} else {
