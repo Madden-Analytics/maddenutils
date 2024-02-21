@@ -147,45 +147,56 @@ type Stock struct {
 
 // Products - Holds all SKU Data
 type Product struct {
-	ID                     int             `json:"id,omitempty"`
-	ProductName            string          `json:"productName,omitempty"`
-	VariantName            string          `json:"variantName,omitempty"`
-	SKU                    string          `json:"sku,omitempty"`
-	VendorSKU              string          `json:"vendorSKU,omitempty"`
-	EAN                    string          `json:"ean,omitempty"`
-	BrandName              string          `json:"brandName,omitempty"`
-	CategoryName           string          `json:"categoryName,omitempty"`
-	Subcategory            string          `json:"subCategory,omitempty"`
-	Collection             string          `json:"collection,omitempty"`
-	Season                 string          `json:"season,omitempty"`
-	Year                   string          `json:"year,omitempty"`
-	Size                   string          `json:"size,omitempty"`
-	Color                  string          `json:"color,omitempty"`
-	AgeGroup               string          `json:"ageGroup,omitempty"`
-	Gender                 string          `json:"gender,omitempty"`
-	ProductGroupID         string          `json:"productGroupID,omitempty"`
-	VariantGroupID         string          `json:"variantGroupID,omitempty"`
-	ExternalID             string          `json:"variantExternalID,omitempty"`
-	Key                    string          `json:"key,omitempty"`
-	SkuSynonym             []string        `json:"skuSynonyms,omitempty"`
-	ProductType            int             `json:"productType,omitempty"`
-	ProductID              uint            `json:"productID,omitempty"`
-	VariantID              uint            `json:"variantID,omitempty"`
-	Info                   datatypes.JSON  `json:"info,omitempty"`
-	CostPrice              float64         `json:"costPrice,omitempty"`
-	CostPriceCurrency      string          `json:"costPriceCurrency,omitempty"`
-	SupplierPrice          float64         `json:"supplierPrice"`
-	SupplierPriceCurrency  string          `json:"supplierPriceCurrency"`
-	Price                  float64         `json:"price,omitempty"`
-	PriceCurrency          string          `json:"priceCurrency,omitempty"`
-	WholesalePrice         float64         `json:"wholesalePrice,omitempty"`
-	WholesalePriceCurrency string          `json:"wholesalePriceCurrency,omitempty"`
-	VatValue               int             `json:"vatValue,omitempty"`
-	Status                 SKUStatus       `json:"status,omitempty"`
-	LeadTime               int             `json:"leadTime,omitempty"`
-	MOQ                    int             `json:"moq,omitempty"`
-	Supplier               string          `json:"supplier,omitempty"`
-	CustomFields           *datatypes.JSON `json:"customFields"`
+	ID                     int                  `json:"id,omitempty"`
+	ProductName            string               `json:"productName,omitempty"`
+	VariantName            string               `json:"variantName,omitempty"`
+	SKU                    string               `json:"sku,omitempty"`
+	VendorSKU              string               `json:"vendorSKU,omitempty"`
+	EAN                    string               `json:"ean,omitempty"`
+	BrandName              string               `json:"brandName,omitempty"`
+	CategoryName           string               `json:"categoryName,omitempty"`
+	Subcategory            string               `json:"subCategory,omitempty"`
+	Collection             string               `json:"collection,omitempty"`
+	Season                 string               `json:"season,omitempty"`
+	Year                   string               `json:"year,omitempty"`
+	Size                   string               `json:"size,omitempty"`
+	Color                  string               `json:"color,omitempty"`
+	AgeGroup               string               `json:"ageGroup,omitempty"`
+	Gender                 string               `json:"gender,omitempty"`
+	ProductGroupID         string               `json:"productGroupID,omitempty"`
+	VariantGroupID         string               `json:"variantGroupID,omitempty"`
+	ExternalID             string               `json:"variantExternalID,omitempty"`
+	Key                    string               `json:"key,omitempty"`
+	SkuSynonym             []string             `json:"skuSynonyms,omitempty"`
+	ProductType            int                  `json:"productType,omitempty"`
+	ProductID              uint                 `json:"productID,omitempty"`
+	VariantID              uint                 `json:"variantID,omitempty"`
+	Info                   datatypes.JSON       `json:"info,omitempty"`
+	CostPrice              float64              `json:"costPrice,omitempty"`
+	CostPriceCurrency      string               `json:"costPriceCurrency,omitempty"`
+	SupplierPrice          float64              `json:"supplierPrice"`
+	SupplierPriceCurrency  string               `json:"supplierPriceCurrency"`
+	Price                  float64              `json:"price,omitempty"`
+	PriceCurrency          string               `json:"priceCurrency,omitempty"`
+	WholesalePrice         float64              `json:"wholesalePrice,omitempty"`
+	WholesalePriceCurrency string               `json:"wholesalePriceCurrency,omitempty"`
+	VatValue               int                  `json:"vatValue,omitempty"`
+	Status                 SKUStatus            `json:"status,omitempty"`
+	LeadTime               int                  `json:"leadTime,omitempty"`
+	MOQ                    int                  `json:"moq,omitempty"`
+	Supplier               string               `json:"supplier,omitempty"`
+	CustomFields           *datatypes.JSON      `json:"customFields"`
+	AdditionalSuppliers    []AdditionalSupplier `json:"additionalSuppliers,omitempty"`
+}
+
+type AdditionalSupplier struct {
+	Supplier              string         `json:"supplier" gorm:"primaryKey"`
+	SupplierPrice         float64        `json:"supplierPrice" gorm:"not null"`
+	SupplierCurrency      string         `json:"supplierPriceCurrency" gorm:"not null"`
+	SupplierVat           int            `json:"vatValue" gorm:"not null"`
+	ExternalProductNumber string         `json:"externalProductNumber" gorm:"not null"`
+	ExternalSupplierID    string         `json:"externalSupplierID" gorm:"not null"`
+	Info                  datatypes.JSON `json:"info" gorm:"default:'{}';not null"`
 }
 
 type Store struct {
