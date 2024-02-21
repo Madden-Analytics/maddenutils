@@ -41,10 +41,13 @@ func (t TransStatementType) String() string {
 type SKUStatus uint8
 
 const (
-	SKUStatus_Inactive SKUStatus = 1
-	SKUStatus_Active   SKUStatus = 2
-	SKUStatus_Outgoing SKUStatus = 3
-	SKUStatus_Draft    SKUStatus = 4
+	SKUStatus_Inactive    SKUStatus = 1
+	SKUStatus_Active      SKUStatus = 2
+	SKUStatus_Outgoing    SKUStatus = 3
+	SKUStatus_Draft       SKUStatus = 4
+	SKUStatus_Placeholder SKUStatus = 5
+	SKUStatus_Exclude     SKUStatus = 6
+	SKUStatus_Sample      SKUStatus = 7
 )
 
 func (t SKUStatus) String() string {
