@@ -178,6 +178,7 @@ type Product struct {
 	SupplierPriceCurrency  string               `json:"supplierPriceCurrency"`
 	Price                  float64              `json:"price,omitempty"`
 	PriceCurrency          string               `json:"priceCurrency,omitempty"`
+	PriceIncludingVat      bool                 `json:"priceIncludingVat,omitempty"`
 	WholesalePrice         float64              `json:"wholesalePrice,omitempty"`
 	WholesalePriceCurrency string               `json:"wholesalePriceCurrency,omitempty"`
 	VatValue               int                  `json:"vatValue,omitempty"`
