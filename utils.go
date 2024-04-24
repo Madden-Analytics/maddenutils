@@ -6,13 +6,13 @@ import (
 	"encoding/base64"
 	"encoding/hex"
 	"encoding/json"
+	"errors"
 	"net/http"
 	"sort"
 	"strconv"
 	"strings"
 	"time"
 
-	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 
 	zerowidth "github.com/trubitsyn/go-zero-width"
@@ -26,7 +26,7 @@ func (s timeSlice) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
 func (s timeSlice) Len() int           { return len(s) }
 
 // GetAuth generates bearer token from Madden
-func GetAuth(baseURL string, accountID string, key string) string {
+func GetAuth(baseURL string, accountID string, key string) (*string, error) {
 
 	var maddenAuth Bearer
 	maddenKey := APIKey{
@@ -44,15 +44,12 @@ func GetAuth(baseURL string, accountID string, key string) string {
 		maddenKeyJSON,
 	)
 	if statusCode != http.StatusOK {
-		log.WithFields(log.Fields{
-			"accountID":    accountID,
-			"errorMessage": string(response),
-		}).Fatal("error getting auth")
+		return nil, errors.New("failed to get Madden Auth")
 	} else {
 		json.Unmarshal(response, &maddenAuth)
 	}
 
-	return maddenAuth.AccessToken
+	return &maddenAuth.AccessToken, nil
 }
 
 // GetBasicToken - Hashes a basic auth token
