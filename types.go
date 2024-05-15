@@ -138,8 +138,8 @@ type Stock struct {
 	SKU                 string    `json:"sku"`
 	EAN                 string    `json:"ean"`
 	Key                 string    `json:"key"`
-	AvailableQuantity   *int      `json:"availableQuantity"`
-	PhysicalQuantity    *int      `json:"physicalQuantity"`
+	AvailableQuantity   *int      `json:"availableQuantity,omitempty"`
+	PhysicalQuantity    *int      `json:"physicalQuantity,omitempty"`
 	Supplier            string    `json:"supplier,omitempty"`
 	ExternalWarehouseID string    `json:"externalWarehouseID,omitempty"`
 	Date                time.Time `json:"date,omitempty"`
