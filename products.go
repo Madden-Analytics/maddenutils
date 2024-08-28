@@ -17,7 +17,7 @@ func GetProductsMap(maBaseURL string, token string) (map[string]Product, error) 
 		pageString := strconv.Itoa(page)
 
 		// Get all SKUS
-		statusCode, response := Request("GET", maBaseURL+"/v1/products?pageSize=10000&page="+pageString, token, nil)
+		statusCode, response := Request("GET", maBaseURL+"/products?pageSize=10000&page="+pageString, token, nil)
 		if statusCode == http.StatusOK {
 			var maProducts []Product
 			json.Unmarshal(response, &maProducts)
@@ -51,7 +51,7 @@ func GetSkusMap(maBaseURL string, token string) (map[string]SKU, error) {
 		pageString := strconv.Itoa(page)
 
 		// Get all SKUS
-		statusCode, response := Request("GET", maBaseURL+"/v1/skus?pageSize=1000&page="+pageString, token, nil)
+		statusCode, response := Request("GET", maBaseURL+"/skus?pageSize=1000&page="+pageString, token, nil)
 		if statusCode == http.StatusOK {
 			var maSkus []SKU
 			json.Unmarshal(response, &maSkus)
