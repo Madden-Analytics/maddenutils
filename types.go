@@ -315,4 +315,5 @@ type DistributionOrder struct {
 	CancelledDate           *time.Time `json:"cancelledDate,omitempty"`
 	OrderType               *string    `json:"orderType"`
 	DeliveryWindow          *string    `json:"deliveryWindow"`
+	Label                   *string    `json:"label"`
 }
