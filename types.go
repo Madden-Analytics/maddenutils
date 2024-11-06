@@ -115,13 +115,13 @@ type PurchaseOrder struct {
 	CompletedDate      *time.Time          `json:"completedDate,omitempty"`
 	CancelledDate      *time.Time          `json:"cancelledDate,omitempty"`
 	ExternalPurchaseNo string              `json:"externalPurchaseNo"`
-	Label              *string             `json:"label"`
-	ExternalComment    string              `json:"externalComment"`
+	Label              *string             `json:"label,omitempty"`
+	ExternalComment    string              `json:"externalComment,omitempty"`
 	Items              []PurchaseOrderItem `json:"items"`
-	OrderType          *string             `json:"orderType"`
-	DeliveryWindow     *string             `json:"deliveryWindow"`
-	Factory            *string             `json:"factory"`
-	TransportMethod    *string             `json:"transportMethod"`
+	OrderType          *string             `json:"orderType,omitempty"`
+	DeliveryWindow     *string             `json:"deliveryWindow,omitempty"`
+	Factory            *string             `json:"factory,omitempty"`
+	TransportMethod    *string             `json:"transportMethod,omitempty"`
 }
 
 type Seller struct {
@@ -313,7 +313,7 @@ type DistributionOrder struct {
 	DeliveredQuantity       uint       `json:"deliveredQuantity"`
 	CompletedDate           *time.Time `json:"completedDate,omitempty"`
 	CancelledDate           *time.Time `json:"cancelledDate,omitempty"`
-	OrderType               *string    `json:"orderType"`
-	DeliveryWindow          *string    `json:"deliveryWindow"`
-	Label                   *string    `json:"label"`
+	OrderType               *string    `json:"orderType,omitempty"`
+	DeliveryWindow          *string    `json:"deliveryWindow,omitempty"`
+	Label                   *string    `json:"label,omitempty"`
 }
