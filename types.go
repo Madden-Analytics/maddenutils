@@ -174,8 +174,8 @@ type Product struct {
 	Info                   datatypes.JSON       `json:"info,omitempty"`
 	CostPrice              float64              `json:"costPrice,omitempty"`
 	CostPriceCurrency      string               `json:"costPriceCurrency,omitempty"`
-	SupplierPrice          float64              `json:"supplierPrice"`
-	SupplierPriceCurrency  string               `json:"supplierPriceCurrency"`
+	SupplierPrice          float64              `json:"supplierPrice,omitempty"`
+	SupplierPriceCurrency  string               `json:"supplierPriceCurrency,omitempty"`
 	Price                  float64              `json:"price,omitempty"`
 	PriceCurrency          string               `json:"priceCurrency,omitempty"`
 	PriceIncludingVat      bool                 `json:"priceIncludingVat,omitempty"`
@@ -186,7 +186,7 @@ type Product struct {
 	LeadTime               int                  `json:"leadTime,omitempty"`
 	MOQ                    int                  `json:"moq,omitempty"`
 	Supplier               string               `json:"supplier,omitempty"`
-	CustomFields           *datatypes.JSON      `json:"customFields"`
+	CustomFields           *datatypes.JSON      `json:"customFields,omitempty"`
 	AdditionalSuppliers    []AdditionalSupplier `json:"additionalSuppliers,omitempty"`
 }
 
