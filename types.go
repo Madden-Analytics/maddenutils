@@ -70,6 +70,7 @@ type TransactionItem struct {
 	DeliveryWindowName         *string                   `json:"deliveryWindow"`
 	CustomFields               *datatypes.JSON           `json:"customFields"`
 	PrimaryWarehouseExternalID *string                   `json:"primaryWarehouseExternalID"`
+	InvoicedDate               *time.Time                `json:"invoicedDate"`
 }
 
 type TransactionItemShipment struct {
