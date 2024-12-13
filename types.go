@@ -300,21 +300,21 @@ type StoreTrafficEvent struct {
 }
 
 type DistributionOrder struct {
-	ID                      uint       `json:"id,omitempty"`
-	ExternalDOID            string     `json:"externalDistributionOrderId"`
-	ExternalRowID           string     `json:"externalRowId"`
-	Key                     string     `json:"key"`
-	Status                  string     `json:"status,omitempty"`
-	OrderDate               time.Time  `json:"orderDate"`
-	ShippedAt               *time.Time `json:"shippedAt"`
-	DeliveryDate            *time.Time `json:"deliveryDate"`
-	FromWarehouseExternalID string     `json:"fromWarehouseExternalId"`
-	ToWarehouseExternalID   string     `json:"toWarehouseExternalId"`
-	Quantity                uint       `json:"quantity"`
-	DeliveredQuantity       uint       `json:"deliveredQuantity"`
-	CompletedDate           *time.Time `json:"completedDate,omitempty"`
-	CancelledDate           *time.Time `json:"cancelledDate,omitempty"`
-	OrderType               *string    `json:"orderType,omitempty"`
-	DeliveryWindow          *string    `json:"deliveryWindow,omitempty"`
-	Label                   *string    `json:"label,omitempty"`
+	ID                      uint                    `json:"id,omitempty"`
+	ExternalDOID            string                  `json:"externalDistributionOrderId"`
+	ExternalRowID           string                  `json:"externalRowId"`
+	Key                     string                  `json:"key"`
+	Status                  DistributionOrderStatus `json:"status,omitempty"`
+	OrderDate               time.Time               `json:"orderDate"`
+	ShippedAt               *time.Time              `json:"shippedAt"`
+	DeliveryDate            *time.Time              `json:"deliveryDate"`
+	FromWarehouseExternalID string                  `json:"fromWarehouseExternalId"`
+	ToWarehouseExternalID   string                  `json:"toWarehouseExternalId"`
+	Quantity                uint                    `json:"quantity"`
+	DeliveredQuantity       uint                    `json:"deliveredQuantity"`
+	CompletedDate           *time.Time              `json:"completedDate,omitempty"`
+	CancelledDate           *time.Time              `json:"cancelledDate,omitempty"`
+	OrderType               *string                 `json:"orderType,omitempty"`
+	DeliveryWindow          *string                 `json:"deliveryWindow,omitempty"`
+	Label                   *string                 `json:"label,omitempty"`
 }

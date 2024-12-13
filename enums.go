@@ -81,3 +81,13 @@ const (
 func (t ProductType) String() string {
 	return strconv.Itoa(int(t))
 }
+
+type DistributionOrderStatus string
+
+const (
+	DistributionOrderStatus_Cancelled  DistributionOrderStatus = "CANCELLED"
+	DistributionOrderStatus_Processing DistributionOrderStatus = "PROCESSING"
+	DistributionOrderStatus_Allocated  DistributionOrderStatus = "ALLOCATED"
+	DistributionOrderStatus_InTransit  DistributionOrderStatus = "IN TRANSIT"
+	DistributionOrderStatus_Completed  DistributionOrderStatus = "COMPLETED"
+)
