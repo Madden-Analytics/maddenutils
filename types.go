@@ -185,7 +185,6 @@ type Product struct {
 	VatValue               int                  `json:"vatValue,omitempty"`
 	Status                 SKUStatus            `json:"status,omitempty"`
 	LeadTime               int                  `json:"leadTime,omitempty"`
-	MOQ                    int                  `json:"moq,omitempty"`
 	Supplier               string               `json:"supplier,omitempty"`
 	CustomFields           *datatypes.JSON      `json:"customFields,omitempty"`
 	AdditionalSuppliers    []AdditionalSupplier `json:"additionalSuppliers,omitempty"`
