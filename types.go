@@ -189,6 +189,10 @@ type Product struct {
 	Supplier               string               `json:"supplier,omitempty"`
 	CustomFields           *datatypes.JSON      `json:"customFields,omitempty"`
 	AdditionalSuppliers    []AdditionalSupplier `json:"additionalSuppliers,omitempty"`
+	UnitVolume             float64              `json:"unitVolume,omitempty"`
+	PackSize               int                  `json:"packSize,omitempty"`
+	Weight                 float64              `json:"weight,omitempty"`
+	MOQ                    int                  `json:"moq,omitempty"`
 }
 
 type AdditionalSupplier struct {
