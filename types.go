@@ -192,6 +192,7 @@ type Product struct {
 	PackSize               int                  `json:"packSize,omitempty"`
 	Weight                 float64              `json:"weight,omitempty"`
 	MOQ                    int                  `json:"moq,omitempty"`
+	ImageURL               string               `json:"imageUrl,omitempty"`
 }
 
 type AdditionalSupplier struct {
