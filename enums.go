@@ -91,3 +91,19 @@ const (
 	DistributionOrderStatus_InTransit  DistributionOrderStatus = "IN TRANSIT"
 	DistributionOrderStatus_Completed  DistributionOrderStatus = "COMPLETED"
 )
+
+type PurchaseOrderCommitType int
+
+const (
+	PurchaseOrderCommitType_Purchase  PurchaseOrderCommitType = 1
+	PurchaseOrderCommitType_Restock   PurchaseOrderCommitType = 2
+	PurchaseOrderCommitType_Scheduled PurchaseOrderCommitType = 3
+)
+
+type DistributionOrderCommitType int
+
+const (
+	DistributionOrderCommitType_Transfer   DistributionOrderCommitType = 1
+	DistributionOrderCommitType_Allocation DistributionOrderCommitType = 2
+	DistributionOrderCommitType_Scheduled  DistributionOrderCommitType = 3
+)
