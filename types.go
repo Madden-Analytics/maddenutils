@@ -164,6 +164,7 @@ type Product struct {
 	Color                  string               `json:"color,omitempty"`
 	AgeGroup               string               `json:"ageGroup,omitempty"`
 	Gender                 string               `json:"gender,omitempty"`
+	Department             string               `json:"department,omitempty"`
 	ProductGroupID         string               `json:"productGroupID,omitempty"`
 	VariantGroupID         string               `json:"variantGroupID,omitempty"`
 	ExternalID             string               `json:"variantExternalID,omitempty"`
