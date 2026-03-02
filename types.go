@@ -325,6 +325,14 @@ type DistributionOrder struct {
 	Label                   *string                 `json:"label,omitempty"`
 }
 
+type PricatBatchRequest struct {
+	Pricat struct {
+		ExternalID string `json:"externalId"`
+		Name       string `json:"name"`
+	} `json:"pricat"`
+	Items []PricatSku `json:"items"`
+}
+
 type PricatSku struct {
 	PricatExternalID  string         `json:"pricatExternalId"`
 	SKU               string         `json:"sku"`
