@@ -324,3 +324,26 @@ type DistributionOrder struct {
 	DeliveryWindow          *string                 `json:"deliveryWindow,omitempty"`
 	Label                   *string                 `json:"label,omitempty"`
 }
+
+type PricatSku struct {
+	PricatExternalID  string         `json:"pricatExternalId"`
+	SKU               string         `json:"sku"`
+	Season            string         `json:"season,omitempty"`
+	ProductName       string         `json:"productName"`
+	ProductGroupID    string         `json:"productGroupId"`
+	VariantName       string         `json:"variantName"`
+	VariantGroupID    string         `json:"variantGroupId"`
+	EAN               string         `json:"ean"`
+	ImageURL          string         `json:"imageUrl"`
+	Color             string         `json:"color"`
+	Size              string         `json:"size"`
+	Category          string         `json:"category"`
+	Brand             string         `json:"brand"`
+	Supplier          string         `json:"supplier"`
+	Price             float64        `json:"price"`
+	PriceCurrency     string         `json:"priceCurrency,omitempty"`
+	CostPrice         float64        `json:"costPrice"`
+	CostPriceCurrency string         `json:"costPriceCurrency,omitempty"`
+	Info              datatypes.JSON `json:"info,omitempty" swaggertype:"object"`
+	VAT               float64        `json:"vat"`
+}
