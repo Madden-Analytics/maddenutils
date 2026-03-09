@@ -327,8 +327,10 @@ type DistributionOrder struct {
 
 type PricatBatchRequest struct {
 	Pricat struct {
-		ExternalID string `json:"externalId"`
-		Name       string `json:"name"`
+		ExternalID  string `json:"externalId"`
+		Name        string `json:"name"`
+		Supplier    string `json:"supplier"`
+		SupplierGLN string `json:"supplierGLN"`
 	} `json:"pricat"`
 	Items []PricatSku `json:"items"`
 }
@@ -347,7 +349,9 @@ type PricatSku struct {
 	Size              string         `json:"size"`
 	Category          string         `json:"category"`
 	Brand             string         `json:"brand"`
+	Gender            string         `json:"gender"`
 	Supplier          string         `json:"supplier"`
+	SupplierGLN       string         `json:"supplierGLN"`
 	Price             float64        `json:"price"`
 	PriceCurrency     string         `json:"priceCurrency,omitempty"`
 	CostPrice         float64        `json:"costPrice"`
