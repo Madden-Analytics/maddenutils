@@ -326,9 +326,9 @@ type DistributionOrder struct {
 }
 
 type MappingTableResponse struct {
-	MappingField  string            `json:"mappingField"`
-	MappingType   MappingType       `json:"mappingType"`
-	MappingValues map[string]string `json:"mappingValues"`
+	MappingField  string         `json:"mappingField"`
+	MappingType   MappingType    `json:"mappingType"`
+	MappingValues map[string]any `json:"mappingValues"`
 }
 
 type MappingTableUpsertRequest struct {
