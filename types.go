@@ -325,6 +325,17 @@ type DistributionOrder struct {
 	Label                   *string                 `json:"label,omitempty"`
 }
 
+type MappingTableResponse struct {
+	MappingField  string            `json:"mappingField"`
+	MappingType   MappingType       `json:"mappingType"`
+	MappingValues map[string]string `json:"mappingValues"`
+}
+
+type MappingTableUpsertRequest struct {
+	MappingType   MappingType    `json:"mappingType"`
+	MappingValues map[string]any `json:"mappingValues"`
+}
+
 type PricatBatchRequest struct {
 	Pricat struct {
 		ExternalID  string `json:"externalId"`

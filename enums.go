@@ -107,3 +107,15 @@ const (
 	DistributionOrderCommitType_Allocation DistributionOrderCommitType = 2
 	DistributionOrderCommitType_Scheduled  DistributionOrderCommitType = 3
 )
+
+type MappingType string
+
+const (
+	MappingType_Products               MappingType = "products"
+	MappingType_Transactions           MappingType = "transactions"
+	MappingType_PurchaseOrders         MappingType = "purchaseOrders"
+	MappingType_DistributionOrders     MappingType = "distributionOrders"
+	MappingType_Stocks                 MappingType = "stocks"
+	MappingType_Suppliers              MappingType = "suppliers"
+	MappingType_CostCalculationValues  MappingType = "costCalculationValues"
+)
