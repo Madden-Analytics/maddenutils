@@ -175,6 +175,7 @@ type Product struct {
 	VariantID              uint                 `json:"variantID,omitempty"`
 	Info                   datatypes.JSON       `json:"info,omitempty"`
 	CostPrice              float64              `json:"costPrice,omitempty"`
+	CostCalculationPrice   float64              `json:"costCalculationPrice,omitempty"`
 	CostPriceCurrency      string               `json:"costPriceCurrency,omitempty"`
 	SupplierPrice          float64              `json:"supplierPrice,omitempty"`
 	SupplierPriceCurrency  string               `json:"supplierPriceCurrency,omitempty"`
