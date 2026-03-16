@@ -338,6 +338,25 @@ type MappingTableUpsertRequest struct {
 	MappingValues map[string]any `json:"mappingValues"`
 }
 
+type PriceList struct {
+	Currency         string `json:"currency"`
+	DefaultPriceList bool   `json:"defaultPriceList"`
+	ExternalID       string `json:"externalId"`
+	Name             string `json:"name"`
+}
+
+type Price struct {
+	Currency     string   `json:"currency"`
+	CustomPrice1 *float64 `json:"customPrice1,omitempty"`
+	CustomPrice2 *float64 `json:"customPrice2,omitempty"`
+	CustomPrice3 *float64 `json:"customPrice3,omitempty"`
+	CustomPrice4 *float64 `json:"customPrice4,omitempty"`
+	ExternalID   string   `json:"externalId"`
+	Name         string   `json:"name"`
+	Price        *float64 `json:"price,omitempty"`
+	Vat          *float64 `json:"vat,omitempty"`
+}
+
 type PricatBatchRequest struct {
 	Pricat struct {
 		ExternalID  string `json:"externalId"`
