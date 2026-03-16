@@ -346,15 +346,16 @@ type PriceList struct {
 }
 
 type Price struct {
-	Currency     string   `json:"currency"`
-	CustomPrice1 *float64 `json:"customPrice1,omitempty"`
-	CustomPrice2 *float64 `json:"customPrice2,omitempty"`
-	CustomPrice3 *float64 `json:"customPrice3,omitempty"`
-	CustomPrice4 *float64 `json:"customPrice4,omitempty"`
-	ExternalID   string   `json:"externalId"`
-	Name         string   `json:"name"`
-	Price        *float64 `json:"price,omitempty"`
-	Vat          *float64 `json:"vat,omitempty"`
+	Currency       string   `json:"currency"`
+	CustomPrice1   *float64 `json:"customPrice1,omitempty"`
+	CustomPrice2   *float64 `json:"customPrice2,omitempty"`
+	CustomPrice3   *float64 `json:"customPrice3,omitempty"`
+	CustomPrice4   *float64 `json:"customPrice4,omitempty"`
+	ListExternalID string   `json:"listExternalID"`
+	Key            string   `json:"key"`
+	Price          *float64 `json:"price,omitempty"`
+	Season         string   `json:"season,omitempty"`
+	Vat            *float64 `json:"vat,omitempty"`
 }
 
 type PricatBatchRequest struct {
