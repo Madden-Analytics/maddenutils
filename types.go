@@ -201,7 +201,6 @@ type Product struct {
 }
 
 type CostCalculationValue struct {
-	Key               string                   `json:"key"`
 	Value             float64                  `json:"value"`
 	Currency          string                   `json:"currency,omitempty"`
 	Type              CostCalculationValueType `json:"type"`
