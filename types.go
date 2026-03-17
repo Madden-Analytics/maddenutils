@@ -201,11 +201,11 @@ type Product struct {
 }
 
 type CostCalculationValue struct {
+	Key               string                   `json:"key"`
 	Value             float64                  `json:"value"`
 	Currency          string                   `json:"currency,omitempty"`
 	Type              CostCalculationValueType `json:"type"`
 	ExternalReference string                   `json:"externalReference,omitempty"`
-	Sort              int                      `json:"sort"`
 }
 
 type AdditionalSupplier struct {
