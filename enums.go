@@ -111,11 +111,18 @@ const (
 type MappingType string
 
 const (
-	MappingType_Products               MappingType = "products"
-	MappingType_Transactions           MappingType = "transactions"
-	MappingType_PurchaseOrders         MappingType = "purchaseOrders"
-	MappingType_DistributionOrders     MappingType = "distributionOrders"
-	MappingType_Stocks                 MappingType = "stocks"
-	MappingType_Suppliers              MappingType = "suppliers"
-	MappingType_CostCalculationValues  MappingType = "costCalculationValues"
+	MappingType_Products              MappingType = "products"
+	MappingType_Transactions          MappingType = "transactions"
+	MappingType_PurchaseOrders        MappingType = "purchaseOrders"
+	MappingType_DistributionOrders    MappingType = "distributionOrders"
+	MappingType_Stocks                MappingType = "stocks"
+	MappingType_Suppliers             MappingType = "suppliers"
+	MappingType_CostCalculationValues MappingType = "costCalculationValues"
+)
+
+type CostCalculationValueType int
+
+const (
+	CostCalculationValueType_Monetary CostCalculationValueType = 1
+	CostCalculationValueType_Percent  CostCalculationValueType = 2
 )
