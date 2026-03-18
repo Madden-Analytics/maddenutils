@@ -371,7 +371,7 @@ type PricatBatchRequest struct {
 	Pricat struct {
 		ExternalID  string `json:"externalId"`
 		Name        string `json:"name"`
-		Supplier    string `json:"supplier"`
+		Supplier    string `json:"supplierName"`
 		SupplierGLN string `json:"supplierGLN"`
 	} `json:"pricat"`
 	Items []PricatSku `json:"items"`
