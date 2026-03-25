@@ -1,8 +1,10 @@
 package maddenutils
 
 import (
+	"encoding/json"
 	"time"
 
+	"github.com/gofrs/uuid"
 	"gopkg.in/guregu/null.v4"
 	"gorm.io/datatypes"
 )
@@ -400,4 +402,14 @@ type PricatSku struct {
 	CostPriceCurrency string         `json:"costPriceCurrency,omitempty"`
 	Info              datatypes.JSON `json:"info,omitempty" swaggertype:"object"`
 	VAT               float64        `json:"vat"`
+}
+
+type ExternalEvent struct {
+	ID          string            `json:"id"`
+	CreatedAt   time.Time         `json:"createdAt"`
+	AccountID   uuid.UUID         `json:"accountId"`
+	EventType   ExternalEventType `json:"eventType"`
+	Payload     json.RawMessage   `json:"payload"`
+	CompletedAt *time.Time        `json:"completedAt"`
+	FailedAt    *time.Time        `json:"failedAt"`
 }

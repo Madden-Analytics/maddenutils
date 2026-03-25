@@ -126,3 +126,11 @@ const (
 	CostCalculationValueType_Monetary CostCalculationValueType = 1
 	CostCalculationValueType_Percent  CostCalculationValueType = 2
 )
+
+type ExternalEventType string
+
+const (
+	ExternalEventType_UpdateSku                  ExternalEventType = "update_sku"
+	ExternalEventType_DraftPoChange              ExternalEventType = "draft_po_change"
+	ExternalEventType_SkuWarehouseSettingsChange ExternalEventType = "sku_warehouse_settings_change"
+)
