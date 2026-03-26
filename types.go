@@ -59,7 +59,7 @@ type TransactionItem struct {
 	ProductGroupID             string                    `json:"productGroupID"`
 	VariantGroupID             string                    `json:"variantGroupID"`
 	Quantity                   int                       `json:"quantity"`
-	VatValue                   int                       `json:"vatValue"`
+	VatValue                   float64                   `json:"vatValue"`
 	MoneyItemTotalNet          float64                   `json:"moneyItemTotalNet"`
 	MoneyItemTotalVat          float64                   `json:"moneyItemTotalVat"`
 	CostPrice                  float64                   `json:"costPrice"`
