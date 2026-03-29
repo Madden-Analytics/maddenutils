@@ -183,6 +183,7 @@ type Product struct {
 	SupplierPrice          float64                `json:"supplierPrice,omitempty"`
 	SupplierPriceCurrency  string                 `json:"supplierPriceCurrency,omitempty"`
 	Price                  float64                `json:"price,omitempty"`
+	Prices                 []Prices               `json:"prices"`
 	PriceCurrency          string                 `json:"priceCurrency,omitempty"`
 	PriceIncludingVat      bool                   `json:"priceIncludingVat,omitempty"`
 	WholesalePrice         float64                `json:"wholesalePrice,omitempty"`
@@ -200,6 +201,16 @@ type Product struct {
 	Weight                 float64                `json:"weight,omitempty"`
 	MOQ                    int                    `json:"moq,omitempty"`
 	ImageURL               string                 `json:"imageUrl,omitempty"`
+}
+
+type Prices struct {
+	CustomPrice1   float64 `json:"customPrice1"`
+	CustomPrice2   float64 `json:"customPrice2"`
+	CustomPrice3   float64 `json:"customPrice3"`
+	CustomPrice4   float64 `json:"customPrice4"`
+	ListExternalID string  `json:"listExternalID"`
+	Price          float64 `json:"price"`
+	Vat            float64 `json:"vat"`
 }
 
 type CostCalculationValue struct {
