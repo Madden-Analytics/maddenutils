@@ -216,9 +216,10 @@ type Prices struct {
 type CostCalculationValue struct {
 	Key               string                   `json:"key"`
 	Value             float64                  `json:"value"`
-	Currency          string                   `json:"currency,omitempty"`
+	Currency          string                   `json:"currency"`
 	Type              CostCalculationValueType `json:"type"`
-	ExternalReference string                   `json:"externalReference,omitempty"`
+	ExternalReference string                   `json:"externalReference"`
+	FXRate            float64                  `json:"fxRate"`
 }
 
 type AdditionalSupplier struct {
