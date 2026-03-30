@@ -204,10 +204,10 @@ type Product struct {
 }
 
 type Prices struct {
-	CustomPrice1   float64 `json:"customPrice1"`
-	CustomPrice2   float64 `json:"customPrice2"`
-	CustomPrice3   float64 `json:"customPrice3"`
-	CustomPrice4   float64 `json:"customPrice4"`
+	CustomPrice1   float64 `json:"customPrice1,omitempty"`
+	CustomPrice2   float64 `json:"customPrice2,omitempty"`
+	CustomPrice3   float64 `json:"customPrice3,omitempty"`
+	CustomPrice4   float64 `json:"customPrice4,omitempty"`
 	ListExternalID string  `json:"listExternalID"`
 	Price          float64 `json:"price"`
 	Vat            float64 `json:"vat"`
