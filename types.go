@@ -426,20 +426,23 @@ type ExternalEvent struct {
 	FailedAt    *time.Time        `json:"failedAt"`
 }
 
-type StockTrigger struct {
-	ID              int    `json:"id"`
-	AccountID       string `json:"accountID"`
-	WarehouseID     string `json:"warehouseID"`
-	SKUID           int    `json:"skuID"`
-	StartDate       string `json:"startDate"`
-	LastRestockDate string `json:"lastRestockDate"`
-	PreventRestock  bool   `json:"preventRestock"`
-	LowerLimit      *int   `json:"lowerLimit"`
-	Min             int    `json:"min"`
-	Max             int    `json:"max"`
-	UpperLimit      *int   `json:"upperLimit"`
-	AllowMinAuto    bool   `json:"allowMinAuto"`
-	AllowMaxAuto    bool   `json:"allowMaxAuto"`
-	MinMaxSource    string `json:"minMaxSource"`
-	MinMaxUpdatedAt string `json:"minMaxUpdatedAt"`
+type Stocktrigger struct {
+	ID                  int       `json:"id"`
+	WarehouseID         string    `json:"warehouseID"`
+	WarehouseExternalID string    `json:"warehouseExternalId"`
+	SkuID               int       `json:"skuID"`
+	Sku                 string    `json:"sku"`
+	Key                 string    `json:"key"`
+	Season              string    `json:"season"`
+	StartDate           string    `json:"startDate"`
+	LastRestockDate     string    `json:"lastRestockDate"`
+	PreventRestock      bool      `json:"preventRestock"`
+	LowerLimit          any       `json:"lowerLimit"`
+	Min                 int       `json:"min"`
+	Max                 int       `json:"max"`
+	UpperLimit          any       `json:"upperLimit"`
+	AllowMinAuto        bool      `json:"allowMinAuto"`
+	AllowMaxAuto        bool      `json:"allowMaxAuto"`
+	MinMaxSource        string    `json:"minMaxSource"`
+	MinMaxUpdatedAt     time.Time `json:"minMaxUpdatedAt"`
 }
