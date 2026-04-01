@@ -425,3 +425,21 @@ type ExternalEvent struct {
 	CompletedAt *time.Time        `json:"completedAt"`
 	FailedAt    *time.Time        `json:"failedAt"`
 }
+
+type StockTrigger struct {
+	ID              int    `json:"id"`
+	AccountID       string `json:"accountID"`
+	WarehouseID     string `json:"warehouseID"`
+	SKUID           int    `json:"skuID"`
+	StartDate       string `json:"startDate"`
+	LastRestockDate string `json:"lastRestockDate"`
+	PreventRestock  bool   `json:"preventRestock"`
+	LowerLimit      *int   `json:"lowerLimit"`
+	Min             int    `json:"min"`
+	Max             int    `json:"max"`
+	UpperLimit      *int   `json:"upperLimit"`
+	AllowMinAuto    bool   `json:"allowMinAuto"`
+	AllowMaxAuto    bool   `json:"allowMaxAuto"`
+	MinMaxSource    string `json:"minMaxSource"`
+	MinMaxUpdatedAt string `json:"minMaxUpdatedAt"`
+}
