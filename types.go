@@ -73,6 +73,7 @@ type TransactionItem struct {
 	CustomFields               *datatypes.JSON           `json:"customFields"`
 	PrimaryWarehouseExternalID *string                   `json:"primaryWarehouseExternalID"`
 	InvoicedDate               *time.Time                `json:"invoicedDate"`
+	TransactionType            TransType                 `json:"type"`
 }
 
 type TransactionItemShipment struct {
@@ -183,7 +184,7 @@ type Product struct {
 	SupplierPrice          float64                `json:"supplierPrice,omitempty"`
 	SupplierPriceCurrency  string                 `json:"supplierPriceCurrency,omitempty"`
 	Price                  float64                `json:"price,omitempty"`
-	Prices                 []Prices               `json:"prices"`
+	Prices                 []Prices               `json:"prices,omitempty"`
 	PriceCurrency          string                 `json:"priceCurrency,omitempty"`
 	PriceIncludingVat      bool                   `json:"priceIncludingVat,omitempty"`
 	WholesalePrice         float64                `json:"wholesalePrice,omitempty"`
