@@ -44,10 +44,9 @@ func Request(requestType string, endpoint string, auth string, json []byte) (int
 
 	if resp.StatusCode == http.StatusUnauthorized {
 		log.WithFields(log.Fields{
-			"requesttype":  requestType,
-			"endpoint":     endpoint,
-			"errorMessage": err,
-		}).Fatal("Unauthorized")
+			"requesttype": requestType,
+			"endpoint":    endpoint,
+		}).Warn("Unauthorized - token may be expired")
 	}
 
 	return resp.StatusCode, response
