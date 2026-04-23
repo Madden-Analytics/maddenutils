@@ -215,13 +215,14 @@ type Prices struct {
 }
 
 type CostCalculationValue struct {
-	Key             string                   `json:"key"`
-	Sort            int                      `json:"sort"`
-	Type            CostCalculationValueType `json:"type"`
-	FXRate          float64                  `json:"fxRate"`
-	Currency        string                   `json:"currency"`
-	MonetaryValue   float64                  `json:"monetaryValue"`
-	PercentageValue float64                  `json:"percentageValue"`
+	Key               string                   `json:"key"`
+	Sort              int                      `json:"sort"`
+	Type              CostCalculationValueType `json:"type"`
+	FXRate            float64                  `json:"fxRate"`
+	Currency          string                   `json:"currency"`
+	MonetaryValue     float64                  `json:"monetaryValue"`
+	PercentageValue   float64                  `json:"percentageValue"`
+	ExternalReference string                   `json:"externalReference"`
 }
 
 type AdditionalSupplier struct {
