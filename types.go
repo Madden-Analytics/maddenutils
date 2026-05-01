@@ -29,6 +29,7 @@ type Transaction struct {
 	Statements            []TransactionStatement `json:"statements"`
 	Items                 []TransactionItem      `json:"items"`
 	OrderType             *string                `json:"orderType"`
+	InvoicedDate          *time.Time             `json:"invoicedDate"`
 }
 
 type TransactionStatement struct {
