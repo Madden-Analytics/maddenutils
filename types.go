@@ -107,9 +107,9 @@ type PurchaseOrderItem struct {
 	Supplier             null.String     `json:"supplier"`
 	ExternalRowID        string          `json:"externalRowID"`
 	Deliveries           []DeliveryEvent `json:"deliveries"`
-	RevisedDeliveryDate  *time.Time      `json:"revisedDeliveryDate"`
-	DepartureDate        *time.Time      `json:"departureDate"`
-	RevisedDepartureDate *time.Time      `json:"revisedDepartureDate"`
+	RevisedDeliveryDate  *time.Time      `json:"revisedDeliveryDate,omitempty"`
+	DepartureDate        *time.Time      `json:"departureDate,omitempty"`
+	RevisedDepartureDate *time.Time      `json:"revisedDepartureDate,omitempty"`
 }
 
 // PurchaseOrder main holder of purchase order items
