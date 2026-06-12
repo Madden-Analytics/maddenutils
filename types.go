@@ -190,7 +190,7 @@ type Product struct {
 	PriceIncludingVat      bool                   `json:"priceIncludingVat,omitempty"`
 	WholesalePrice         float64                `json:"wholesalePrice,omitempty"`
 	WholesalePriceCurrency string                 `json:"wholesalePriceCurrency,omitempty"`
-	VatValue               int                    `json:"vatValue,omitempty"`
+	VatValue               float64                `json:"vatValue,omitempty"`
 	Status                 SKUStatus              `json:"status,omitempty"`
 	ActivePlanning         bool                   `json:"activePlanning,omitempty"`
 	LeadTime               int                    `json:"leadTime,omitempty"`
