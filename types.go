@@ -284,10 +284,6 @@ type SKU struct {
 	Source            int            `json:"source"`
 	CostPrice         int            `json:"costPrice"`
 	CostPriceCurrency string         `json:"costPriceCurrency"`
-	Price             int            `json:"price"`
-	PriceCurrency     string         `json:"priceCurrency"`
-	Moq               int            `json:"moq"`
-	LeadTime          int            `json:"leadTime"`
 	Supplier          string         `json:"supplier"`
 }
 
