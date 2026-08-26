@@ -74,6 +74,7 @@ type TransactionItem struct {
 	CustomFields               *datatypes.JSON           `json:"customFields"`
 	PrimaryWarehouseExternalID *string                   `json:"primaryWarehouseExternalID"`
 	InvoicedDate               *time.Time                `json:"invoicedDate"`
+	DeliveryDate               *time.Time                `json:"deliveryDate"`
 	TransactionType            *TransType                `json:"type"`
 }
 
