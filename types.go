@@ -66,6 +66,7 @@ type TransactionItem struct {
 	CostPrice                  float64                   `json:"costPrice"`
 	CostPriceCurrency          string                    `json:"costPriceCurrency"`
 	MoneyDiscount              float64                   `json:"moneyDiscount"`
+	MoneyDiscountIncVat        *float64                  `json:"moneyDiscountIncVat"`
 	ExternalID                 string                    `json:"externalID"`
 	ProductType                int                       `json:"productType,omitempty"`
 	FulfillmentType            int                       `json:"fulfillmentType"`
