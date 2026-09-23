@@ -205,6 +205,8 @@ type Product struct {
 	Weight                 float64                `json:"weight,omitempty"`
 	MOQ                    int                    `json:"moq,omitempty"`
 	ImageURL               string                 `json:"imageUrl,omitempty"`
+	StartDate              *string                `json:"startDate,omitempty"`
+	EndDate                *string                `json:"endDate,omitempty"`
 }
 
 type Prices struct {
