@@ -112,6 +112,7 @@ type PurchaseOrderItem struct {
 	RevisedDeliveryDate  *time.Time      `json:"revisedDeliveryDate,omitempty"`
 	DepartureDate        *time.Time      `json:"departureDate,omitempty"`
 	RevisedDepartureDate *time.Time      `json:"revisedDepartureDate,omitempty"`
+	Season               string          `json:"season,omitempty"`
 }
 
 // PurchaseOrder main holder of purchase order items
