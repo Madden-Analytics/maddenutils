@@ -196,7 +196,9 @@ type Product struct {
 	VatValue               float64                `json:"vatValue,omitempty"`
 	Status                 SKUStatus              `json:"status,omitempty"`
 	ActivePlanning         bool                   `json:"activePlanning,omitempty"`
-	LeadTime               int                    `json:"leadTime,omitempty"`
+	LeadTime               int                    `json:"leadTime,omitempty"` // Deprecated: use ProductionLeadTimeDays and ShippingLeadTimeDays.
+	ProductionLeadTimeDays *int                   `json:"productionLeadTimeDays,omitempty"`
+	ShippingLeadTimeDays   *int                   `json:"shippingLeadTimeDays,omitempty"`
 	Supplier               string                 `json:"supplier,omitempty"`
 	CustomFields           *datatypes.JSON        `json:"customFields,omitempty"`
 	ExternalAttributes     *datatypes.JSON        `json:"externalAttributes,omitempty"`
